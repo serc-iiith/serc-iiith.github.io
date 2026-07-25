@@ -1,0 +1,453 @@
+<html>
+<head><title>CS6.302 SSD Monsoon 2026</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quicksand">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-DF7Zhf293AJxJNTmh5zhoYYIMs2oXitRfBjY+9L//AY=" crossorigin="anonymous">
+<style>
+body {font-family: Quicksand; font-size: 20px; color:#333}
+        table
+        {
+            font-family: Quicksand; font-size:20px; color:#333;
+            border-collapse:collapse;
+            width:1000px;
+            padding:10px;
+            border-spacing:10px
+			
+        }
+
+	.light-text-row {
+        color: #ADADAD; 
+    }
+
+</style>
+	<script>
+  
+  const lastModified = new Date(document.lastModified);
+ 
+  const formattedDate = lastModified.toLocaleString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit'
+  });
+
+  document.getElementById("lastUpdated").innerHTML += formattedDate;
+</script>
+<script>
+function startTime() {
+  const today = new Date();
+  let h = today.getHours();
+  let m = today.getMinutes();
+  let s = today.getSeconds();
+  m = checkTime(m);
+  s = checkTime(s);
+  document.getElementById('txt').innerHTML = today 
+  setTimeout(startTime, 1000);
+}
+
+function checkTime(i) {
+  if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+  return i;
+}
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body onload="startTime()">
+	<!--<script>
+	alert("All the Best for your Final Exam!");
+		</script>-->
+<table align="center" width="100%" cellspacing="10" cellpadding="10" border="0">
+<tr>
+<td><h1 align="center" id="home">CS6.302 - Software System Development</h1><h3 align="center">Software Engineering Research Center, IIIT Hyderabad</h3> <h3 align="center">Monsoon 2026</h3></td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; <a href="#about">About</a>&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; <a href="#lecture">Lecture/Lab/Office Hours</a> &nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; <a href="#cpolicy">Course Policy</a> &nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; <a href="#schedule">Lectures</a> &nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;  <a href="#lab">Lab</a> &nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; <a href="#activity">Exams</a> &nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; <a href="#staff">Staff</a>&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; <hr></td>
+</tr>
+<tr>
+<td> <p align="left"><b id="about">About:</b> Software System Development is a graduate-level course that equips students with a comprehensive understanding of the principles, tools, and practices involved in designing and building modern software systems. Emphasizing a systems-oriented perspective, the course explores foundational and contemporary topics including Operating Systems, Computer Networks, Software Engineering methodologies, and Database Systems (both relational and NoSQL).
+<br>
+<br>
+Students will gain practical experience with industry-relevant tools and technologies such as Bash scripting, SQL, NoSQL databases, HTML, CSS, JavaScript, front-end frameworks, RESTful APIs, Python, and Flask. The course focuses on building scalable, maintainable, and secure software systems while fostering an appreciation for system integration, version control, development workflows, and deployment strategies.
+<br>
+<br>
+Designed for students with a fundamental background in programming, this course bridges theory and practice, preparing them to contribute effectively to complex software development projects in both research and industry settings.<hr></td>
+</tr>
+<tr>
+<td> <p align="left"><b id="lecture">Lecture/Lab Hours:</b> The lectures will be in-person and will be conducted by the Instructor. The lab sessions will be in-person and will be conducted by the Teaching Assistants. The lecture material (slides, lectures notes, Suppl Material) can be accessed from this website The lecture and lab hours are mentioned below:
+
+<ul><li>Lecture &#x1F3DB; : 8:30 AM to 9:55 AM - Tuesdays and Fridays - Lecture Hall: TBD</li> <li>Lab/Tutorial &#x1F4BB; : TBD - Lecture Hall: TBD </li></ul></p>
+<p align="left"><b>Office Hours:</b> There are no specific instructor office hours. Instructor is available to meet all the students for 15 minutes before and after every class to address any queries or concerns. You can also directly write to instructor at saianirudh.karre[at]iiit.ac.in to get your queries addressed. TA office hours can be found <a href="#staff">here</a>.
+</p><hr>
+</td>
+</tr>
+<tr>
+<td>
+<p align="left"><b id="cpolicy">Course Policy:</b> &nbsp;&nbsp;&nbsp;[<a href="#home">go to top</a>]
+<ul>
+<li><b>Teaching and Learning Methodology:</b>This course is designed in such a manner to help learners get the essence of principles behind good software system development. Learners will be taught concepts by making them work on real-life problems. This will promote deeper engagement, deeper understanding and resembles the true career situation. Overall Course Notes can be found <a href="https://tinted-rumba-8c6.notion.site/CS6-302-Software-System-Development-670da706e9514d7f9d5b1bcf3c6a1005" target="_blank">here</a></p>
+</li>
+<li><b>Academic Honesty:</b> If A helps B in a Task X -> B doesn't get opportunity to do task X, B doesn't learn the skill to do task X, B gets spoilt-dependent-unfit for jobs requiring skills of task X, You may think it is okay to do it only once and not repeat it, But when a task is done once it gets wired into the brain as being "okay" and unless there is a strong reason it will repeat. If you want to help, help to learn!
+<br>
+<br> 
+</li>
+<li><b>Zero Tolerance on Plagiarism:</b>This course requires student to submit assignments, participate in in-class activities, give mid and final exams, work with groups on projects and so on. Any forms of cheating or plagiarism will result in a score of “0” for projects, assignments or exams. Egregious cases will result in a grade of “F” for the course.
+<br>
+<br> 
+</li>
+<li><b>Absentee policy:</b> You are expected to attend and participate in all lectures and lab sessions (graded or ungraded).  However, if any quiz/activity is held during the lecture session that you are absent, you will be given a ‘0’ for the same. There will be NO make up classes/quizzes/activities. These rules are not meant to be demeaning or penalizing. They are stated to establish a clear understanding of the course expectations for student participation and demeanor in the classroom. These rules are meant to help/motivate students to learn. 
+<br>
+<br> 
+</li>
+<li><b>Miscellaneous Instructions:</b> Given the subject is based on building software systems, ensure you have a laptop with decent configuration. Please make every effort to participate in the in-class discussions, interact with the instructor during class, interact with the TAs during the labs. You are expected to attend the class with your personal machine. 
+<br>
+<br> 
+</li>
+<li><b>Use of AI Tools:</b> Students are free to use different AI tools like ChatGPT, Co-pilot, etc. for the course assignments/activities. However, please do mention what tools and how they have been used in the submission report. Please note that these tools can mislead or provide wrong solutions. Its important to know the concept before using the tools. Tools are at the end-of-the day enablers. Today it will be ChatGPT tomorrow it will be something else but the concepts needs to be clear to leverage the different tools. Bottomline, feel free to use different tools but use them wisely!
+<br>
+<br> 
+</li>
+<li><b>Submission Deadlines:</b> Considering this course has more than 100+ enrolled students, there will be NO extensions! for any graded task. It is your responsibility to submit an assignment or a lab activity on a prescribed deadline. Please do not wait until last minute to submit your submission. We will not entertain last minute huddle issues due to moodle. The instructors and TAs shall provide considerable amount of time for all your assignments and lab activities with a grace time for submission. Please ensure that you follow the respective submission guidelines while you submit for assignments and lab activities. If you couldn't submit any graded task due to health issues/attending a game/attending a conference/personal issue - please work with academic office for exemption. 
+<br>
+<br> 
+</li>
+<li><b>Grading Policy:</b> Once a grade for certain course deliverable (labs, assignments, quiz, exam, etc.) is released, the students may request a re-evaluation (with appropriate reasons) of the grade up to a week after the grade has been posted. After that, the student may not discuss prior grades with the instructor (even if the instructors or TAs are at fault). There will be no makeup activity/lab under any circumstances unless prior permission is granted from Academic Office. Late submissions will not be entertained unless there is a genuine health reason. Appropriate medical documentation will be needed in such cases - - please work with academic office for exemption.
+<br>
+<br> 
+</li>
+<li><b>Grading Distribution:</b> The course instructor reserves the right to make minor modifications to the above distribution based on the progress of the courses. Below is the overall grade distribution.
+<br>
+<br> 
+<table border="1" align="center">
+<tr align="center"><th>Deliverables</th><th>Weightage</th></tr>
+<tr align="center"><td>Assignment (2)</td><td>10%</td></tr>
+<tr align="center"><td>Lab Activities (5)</td><td>10%</td></tr>
+<tr align="center"><td>Practice and Class Activity (5)</td><td>15%</td></tr>
+<tr align="center"><td>QUIZ (2)</td><td>15%</td></tr>
+<tr align="center"><td>MID (1) - Team Hackathon</td><td>20%</td></tr>
+<tr align="center"><td>Final Exam (Team Project)</td><td>30%</td></tr>
+</table>
+</li>
+<br>
+<li><b>Evaluation Rubric:</b> All evaluations as part of this course follow below evaluation rubric. TAs will follow below guidelines for evaluating assignments and lab activities for this course.
+<br>
+<br>
+<table border="1" align="center" width="10%">
+<tr><th>Rubric</th><th>Input(15%)</th><th>Logic(60%)</th><th>Output(15%)</th><th>Submission(10%)</th></tr>
+<tr><td>Exceptional (100%)</td><td>All inputs are working as per the requirements</td><td>Logic is accurate and as per the requirements defined in the question</td><td>All outputs are returned as per the requirements</td><td>Script submissions are correct and as per requirements</td></tr>
+<tr><td>Acceptable (70%)</td><td>Inputs are partially working as per the requirements</td><td>Logic is almost correct and as per the requirements defined in the question</td><td>Outputs are partially returned as per the requirements</td><td>Script submissions is partially correct and as per requirements</td></tr>
+<tr><td>Beginning (30%)</td><td>At least one input is working as per the requirements</td><td>Logic is partially correct and as per the requirements defined in the question</td><td>At least one output is returned as per the requirement</td><td>Atleast one part of the script submission is correct and as per requirements</td></tr>
+<tr><td>No Response (0%)</td><td>None of the inputs are working as per the requirements</td><td>Logic is incorrect and not as per the requirements defined in the question</td><td>None of the outputs are returned as per the requirements</td><td>Script submissions is incorrect and not as per requirements</td></tr>
+</table> 
+</li>
+</ul><hr>
+</p>
+</td>
+</tr>
+</tr>
+</table>
+
+<table border="1" align="center" width="10%">
+<tr>
+<td colspan="5"><p align="left"><b id="schedule">&nbsp; Lecture Schedule & Content</b>&nbsp;&nbsp;&nbsp;[<a href="#home">go to top</a>]</p></td>
+</tr>
+<tr align="center">
+    <th>S.No</th>
+    <th>Schedule</th>
+    <th>Lecture Content</th>
+    <th>Material</th>
+   </tr>
+  <tr align="center" class="light-text-row">
+    <td>1</td>
+    <td>01-Aug-25 (Friday)</td>
+    <td>Course Intro - Software Systems</td>
+    <td>[<a href="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/sai11101989/sai11101989.github.io/main/Course/SSD_Monsoon2025/SSD_Monsoon2025.pdf" target="_blank">Slides</a>][<a href="https://tinted-rumba-8c6.notion.site/Software-System-2456a6248bf68034bc14cfc44dc93062" target="_blank">Notes</a>]</td>
+  </tr>
+  <tr align="center" class="light-text-row">
+    <td>2</td>
+    <td>05-Aug-25 (Tuesday)</td>
+    <td>Relational Data</td>
+    <td>[<a href="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/sai11101989/sai11101989.github.io/main/Course/SSD_Monsoon2025/data.pdf" target="_blank">Slides</a>][<a href="https://tinted-rumba-8c6.notion.site/Structured-Databases-2456a6248bf6805f83e1cbf0a58761ec" target="_blank">Notes</a>]</td>
+  </tr>
+  <tr align="center" class="light-text-row">
+    <td>3</td>
+    <td>08-Aug-25 (Friday)</td>
+    <td>Unstructured Data - Session 1</td>
+    <td>[<a href="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/sai11101989/sai11101989.github.io/main/Course/SSD_Monsoon2025/NoSQLClass.pdf" target="_blank">Slides</a>][<a href="https://tinted-rumba-8c6.notion.site/Unstructured-Databases-24b6a6248bf680679b36e76c33d301c4" target="_blank">Notes</a>]</td>
+  </tr>
+  <tr align="center" class="light-text-row">
+    <td>4</td>
+    <td>12-Aug-25 (Tuesday)</td>
+    <td><s>Unstructured Data - Session 2</s> <br> [Cancelled - Rain ⛈️]</td>
+    <td>[<a href="https://tinted-rumba-8c6.notion.site/Unstructured-Databases-24b6a6248bf680679b36e76c33d301c4" target="_blank">Notes</a>] [<a href="https://raw.githubusercontent.com/sai11101989/sai11101989.github.io/main/Course/ISS_Spring_2025/mongo.txt" target="_blank">Scripts</a>] </td>
+  </tr>
+  <tr align="center" class="light-text-row">
+    <td>5</td>
+    <td>19-Aug-25 (Tuesday)</td>
+    <td>Unstructured Data - Session 2</td>
+    <td>[<a href="https://tinted-rumba-8c6.notion.site/Worked-out-Examples-2546a6248bf68073a460cbfc52825dfd" target="_blank">Practice</a>][<a href="https://tinted-rumba-8c6.notion.site/Some-Concepts-2546a6248bf6806fafd0d8260507fc03?pvs=73" target="_blank">Notes</a>]</td>
+  </tr>
+  <tr align="center" class="light-text-row">
+    <td>6</td>
+    <td>22-Aug-25 (Friday)</td>
+    <td>Web - HTML</td>
+    <td>[<a href="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/sai11101989/sai11101989.github.io/main/Course/SSD_Monsoon2025/Web.pdf" target="_blank">Web-Slides</a>][<a href="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/sai11101989/sai11101989.github.io/main/Course/SSD_Monsoon2025/HTML.pdf" target="_blank">HTML-Slides</a>]<br>[<a href="https://tinted-rumba-8c6.notion.site/Web-Technology-2566a6248bf6800488d0c13a992502e4?pvs=143" target="_blank">Notes</a>][<a href="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/sai11101989/sai11101989.github.io/main/Course/SSD_Monsoon2025/html_super_demo_single_file_html.html" target="_blank">Scripts</a>]</td>
+  </tr>
+  <tr align="center" class="light-text-row">
+    <td>7</td>
+    <td>26-Aug-25 (Tuesday)</td>
+    <td>Web - CSS</td>
+    <td>[<a href="https://tinted-rumba-8c6.notion.site/CSS-2566a6248bf680dc8299c320f04a5141?pvs=74" target="_blank">Notes</a>][<a href="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/sai11101989/sai11101989.github.io/main/Course/SSD_Monsoon2025/css_super_demo_single_file_html.html" target="_blank">Scripts</a>]</td>
+  </tr>
+  <tr align="center" class="light-text-row">
+    <td>8</td>
+    <td>29-Aug-25 (Friday)</td>
+    <td>JavaScript - Session 1</td>
+    <td>[<a href="https://github.com/sai11101989/sai11101989.github.io/tree/main/Course/SSD_Monsoon2025/JS1" target="_blank">Scripts</a>][<a href="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/sai11101989/sai11101989.github.io/main/Course/ISS_Spring_2025/6_Class6_JavaScript.pdf" target="_blank">Slides</a>]</td>
+  </tr>
+  <tr align="center" class="light-text-row">
+    <td>9</td>
+    <td>02-Sep-25 (Tuesday)</td>
+    <td>JavaScript Session 2</td>
+    <td>[<a href="https://github.com/sai11101989/sai11101989.github.io/tree/main/Course/SSD_Monsoon2025/JS2" target="_blank">Scripts</a>][<a href="https://tinted-rumba-8c6.notion.site/JavaScript-2606a6248bf680138283f6419bd87777" target="_blank">Notes</a>]</td>
+  </tr>
+  <tr align="center" class="light-text-row">
+    <td>10</td>
+    <td>04-Sep-25 (Thursday)</td>
+    <td><s>JavaScript Session 3 </s> <br> [Cancelled - Instructor Sick 🤒]</td>
+    <td>[Scripts][Notes]</td>
+  </tr>
+  <tr align="center" class="light-text-row">
+    <td>11</td>
+    <td>9-Sep-25 (Tuesday)</td>
+    <td>JavaScript Session 3</td>
+    <td>[<a href="https://tinted-rumba-8c6.notion.site/Data-Structures-2686a6248bf680098b38d12626ad1012?pvs=74" target="_blank">Notes</a>][<a href="https://github.com/sai11101989/sai11101989.github.io/tree/main/Course/SSD_Monsoon2025/JS3" target="_blank">Scripts</a>]</td>
+  </tr>
+  <tr align="center" class="light-text-row">
+    <td>12</td>
+    <td>12-Sep-25 (Friday)</td>
+    <td>React JS</td>
+    <td>[<a href="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/sai11101989/sai11101989.github.io/main/Course/SSD_Monsoon2025/ReactJS_2025.pdf" target="_target">Slide</a>][<a href="https://www.notion.so/Asynchronous-JavaScript-26b6a6248bf68016971dd3bde3b89015" target="_blank">Notes</a>][<a href="https://github.com/sai11101989/sai11101989.github.io/tree/main/Course/SSD_Monsoon2025/JS4" target="_blank">Scripts</a>]</td>
+  </tr>
+  <tr align="center" class="light-text-row">
+    <td>13</td>
+    <td>26-Sep-25 (Friday)</td>
+    <td>SE Practices</td>
+    <td>[<a href="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/sai11101989/sai11101989.github.io/main/Course/SSD_Monsoon2025/SEPractices.pdf" target="_target">Slides</a>]</td>
+  </tr>
+	<tr align="center" class="light-text-row">
+    <td>14</td>
+    <td>26-Sep-25 (Friday) @ 2PM-5PM</td>
+    <td>System Design</td>
+    <td>[<a href="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/sai11101989/sai11101989.github.io/main/Course/SSD_Monsoon2025/SystemDesign.pdf" target="_target">Slides</a>]</td>
+  </tr>
+  <tr align="center" class="light-text-row">
+    <td>15</td>
+    <td>30-Sep-25 (Tuesday)</td>
+    <td>Python Session 1</td>
+    <td>[<a href="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/sai11101989/sai11101989.github.io/main/Course/SSD_Monsoon2025/Python_Session1.pdf" target="_target">Slides</a>]</td>
+  </tr>
+  <tr align="center" class="light-text-row">
+    <td>16</td>
+    <td>03-Oct-25 (Friday)</td>
+    <td>Python Session 2</td>
+    <td>[<a href="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/sai11101989/sai11101989.github.io/main/Course/SSD_Monsoon2025/Python_Session2.pdf" target="_target">Slides</a>][<a href="https://github.com/sai11101989/sai11101989.github.io/blob/main/Course/SSD_Monsoon2025/Lec%202.ipynb" target="_target">Scripts</a>]</td>
+  </tr>
+  <tr align="center" class="light-text-row">
+    <td>17</td>
+    <td>07-Oct-25 (Tuesday)</td>
+    <td>Python - Session 3</td>
+    <td>[<a href="https://github.com/sai11101989/sai11101989.github.io/blob/main/Course/SSD_Monsoon2025/Lec%203.ipynb" target="_blank">Scripts</a>]</td>
+  </tr>
+  <tr align="center" class="light-text-row">
+    <td>18</td>
+    <td>10-Oct-25 (Friday)</td>
+    <td>Python - Session 4</td>
+    <td>[<a href="https://github.com/sai11101989/sai11101989.github.io/blob/main/Course/SSD_Monsoon2025/Lec%204.ipynb" target="_blank">Scripts</a>]</td>
+  </tr>
+  <tr align="center" class="light-text-row">
+    <td>19</td>
+    <td>14-Oct-25 (Tuesday)</td>
+    <td>Python - Session 5</td>
+    <td>[<a href="https://github.com/sai11101989/sai11101989.github.io/blob/main/Course/SSD_Monsoon2025/Lec%205.ipynb" target="_blank">Scripts</a>]</td>
+  </tr>
+  <tr align="center" class="light-text-row">
+    <td>20</td>
+    <td>17-Oct-25 (Friday)</td>
+    <td>Python - Session 6</td>
+    <td>[<a href="https://github.com/sai11101989/sai11101989.github.io/blob/main/Course/SSD_Monsoon2025/Lec%206.ipynb" target="_blank">Scripts</a>]</td>
+  </tr>
+  <tr align="center" class="light-text-row">
+    <td>21</td>
+    <td>24-Oct-25 (Friday)</td>
+    <td>Python - Session 7</td>
+   <td>[<a href="https://github.com/sai11101989/sai11101989.github.io/blob/main/Course/SSD_Monsoon2025/Lec%207.ipynb" target="_blank">Scripts</a>]</td>
+  </tr>
+  <tr align="center" class="light-text-row">
+    <td>22</td>
+    <td>28-Oct-25 (Tuesday)</td>
+    <td>Python - Session 8</td>
+    <td>[Notes][Slides]</td>
+  </tr>
+  <tr align="center" class="light-text-row">
+    <td>23</td>
+    <td>31-Oct-25 (Friday)</td>
+    <td>Python - Session 9</td>
+    <td>[Notes][Slides]</td>
+  </tr>
+  <tr align="center" class="light-text-row">
+    <td>24</td>
+    <td>07-Nov-25 (Friday)</td>
+    <td>Python - Session 10</td>
+    <td>[Notes][Slides]</td>
+  </tr>
+  <tr align="center" class="light-text-row">
+    <td>25</td>
+    <td>11-Nov-25 (Tuesday)</td>
+    <td>SHELL Session 1</td>
+    <td>[Notes][Slides]</td>
+  </tr>
+  <tr align="center" class="light-text-row">
+    <td>26</td>
+    <td>14-Nov-25 (Friday)</td>
+    <td>SHELL Session 2</td>
+    <td>[Notes][Slides]</td>
+  </tr>
+	 <tr align="center">
+    <td>26</td>
+    <td>18-Nov-25 (Friday)</td>
+    <td>Retrospection - 30 minutes!</td>
+    <td></td>
+  </tr>
+</table>
+<table align="center" width="10%" cellspacing="10" cellpadding="10" border="0">
+<tr><td><hr></td></tr>
+</table>
+<table border="1" align="center" width="10%">
+<tr>
+<td colspan="4"><p align="left"><b id="lab">&nbsp;Lab Schedule & Content</b>&nbsp;&nbsp;&nbsp;[<a href="#home">go to top</a>]</p></td>
+</tr>
+<tr align="center">
+<th>Lab No.</th><th>Schedule</th><th>Topic</th><th>Notes</th>
+</tr>
+<tr align="center" class="light-text-row">
+<td>01</td><td>7-Aug-2025 (Friday)</td><td>Git Session</td><td>[<a href="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/sai11101989/sai11101989.github.io/main/Course/SSD_Monsoon2025/Labs/Lab01/SSD%20Tutorial%20%20-%20GIT.pdf" target="_blank">Slides</a>][<a href="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/sai11101989/sai11101989.github.io/main/Course/SSD_Monsoon2025/Labs/Lab01/SSD_GIT_LAB.pdf" target="_blank">Activity</a>]</td>
+</tr>
+<tr align="center" class="light-text-row">
+<td>02</td><td>14-Aug-2025 (Thurday) @ 2PM-3PM</td><td>SQL Session</td><td>[<a href="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/sai11101989/sai11101989.github.io/main/Course/SSD_Monsoon2025/Labs/Lab01/Lab-2.pdf" target="_blank">Slides</a>][<a href="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/sai11101989/sai11101989.github.io/main/Course/SSD_Monsoon2025/Labs/Lab01/Activity%20-%20Lab%202.pdf" target="_blank">Activity</a>] </td>
+</tr>
+<tr align="center" class="light-text-row">
+<td>03</td><td>21-Aug-2025 (Thurday) @ 2PM-3PM</td><td>NoSQL Session</td><td>[<a href="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/sai11101989/sai11101989.github.io/main/Course/SSD_Monsoon2025/Labs/Lab01/NoSQL%20Lab3.pdf" target="_blank">Slides</a>][<a href="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/sai11101989/sai11101989.github.io/main/Course/SSD_Monsoon2025/Labs/Lab01/Activity_lab3.pdf" target="_blank">Activity</a>] [<a href="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/sai11101989/sai11101989.github.io/main/Course/SSD_Monsoon2025/Labs/Lab01/NoSQL_Illustration.pdf" target="_blank">Example</a>]</td>
+</tr>
+<tr align="center" class="light-text-row">
+<td>04</td><td>28-Aug-2025 (Thurday) @ 2PM-3PM</td><td>DOM</td><td>[<a href="https://github.com/sai11101989/sai11101989.github.io/tree/main/Course/SSD_Monsoon2025/DOM" target="_blank">Slides & Activity</a>]</td>
+</tr>
+<tr align="center" class="light-text-row">
+<td>05</td><td>04-Sept-2025 (Friday) @ 2PM-5PM</td><td>JS Session </td><td>[<a href="https://github.com/sai11101989/sai11101989.github.io/tree/main/Course/SSD_Monsoon2025/JSLab" target="_blank">Slides & Activity</a>]</td>
+</tr>
+<tr align="center" class="light-text-row">
+<td>06</td><td>18-Sept-2025 (Thursday) @ 2PM-3PM</td><td>Browser Events</td><td>[<a href="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/sai11101989/sai11101989.github.io/main/Course/SSD_Monsoon2025/Browser%20DOM%20Events.pdf" target="_blank">Slides</a>][<a href="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/sai11101989/sai11101989.github.io/main/Course/SSD_Monsoon2025/SSD%20-%20Events%20Activity.pdf" target="_blank">Activity</a>]</td>
+</tr>
+<tr align="center" class="light-text-row">
+<td>07</td><td>16-Sept-2025 (Friday) @ 8:30AM-9:55AM (H205)</td><td>MERN Session - NodeJS</td><td>[<a href="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/sai11101989/sai11101989.github.io/main/Course/SSD_Monsoon2025/MERN.pdf">Slides</a>][<a href="https://github.com/AadityaNarain2003/Mern_Lab_1_" target="_blank">Boiler Code</a>]</td>
+</tr>
+<tr align="center" class="light-text-row">
+<td>08</td><td>19-Sept-2025 (Friday) @ 8:30AM-9:55AM (H205) </td><td>MERN App - Session 2</td><td>[<a href="https://github.com/AadityaNarain2003/Mern_Lab_2_" target="_blank">Boiler Code</a>]</td>
+</tr>
+<tr align="center" class="light-text-row">
+<td>09</td><td>20-Sept-2025 (Saturday) @ 2PM-5PM</td><td>MERN App - Session 3</td><td>[<a href="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/sai11101989/sai11101989.github.io/main/Course/SSD_Monsoon2025/MERN%20LAB%203%20-%20SLIDES.pdf" target="_blank">Slides</a>][<a href="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/sai11101989/sai11101989.github.io/main/Course/SSD_Monsoon2025/SSD_LAB___MERN.pdf" target="_blank">Activity</a>]</td>
+</tr>
+<tr align="center" class="light-text-row">
+<td>10</td></td><td>3-Oct-2025 (Friday) @ 2PM to 5PM </td><td> MID and Project Phase 1 Evaluation</td><td></td>
+</tr>
+<tr align="center" class="light-text-row">
+<td>11</td></td><td>10-Oct-2025 (Friday) @ 2PM-5PM</td><td>Python Session 1</td><td>[<a href="https://github.com/sai11101989/sai11101989.github.io/tree/main/Course/SSD_Monsoon2025/Python1" target="_blank">Slides & Activity</a>]</td>
+</tr>
+<tr align="center" class="light-text-row">
+<td>12</td><td>17-Oct-2025 (Friday) @ 2PM-5PM</td><td>Python Session 2</td><td>[<a href="https://github.com/sai11101989/sai11101989.github.io/tree/main/Course/SSD_Monsoon2025/Python2" target="_blank">Slides & Activity</a>]</td>
+</tr>
+<tr align="center" class="light-text-row">
+<td>13</td><td>23-Oct-2025 (Thursday) @ 2PM-3PM</td><td>Python Session 3</td><td>[<a href="https://github.com/sai11101989/sai11101989.github.io/tree/main/Course/SSD_Monsoon2025/Python3" target="_blank">Slides & Activity</a>]</td>
+</tr>
+<tr align="center" class="light-text-row">
+<td>14</td><td>24-Oct-2025 (Friday) @ 2PM-5PM</td><td>Python Session 4</td><td>[<a href="https://github.com/sai11101989/sai11101989.github.io/tree/main/Course/SSD_Monsoon2025/Python4" target="_blank">Slides & Activity</a>]</td>
+</tr>
+<tr align="center" class="light-text-row">
+<td>15</td><td>7-Nov-2025 (Friday) @ 2PM-5PM</td><td>Python Session 5</td><td>[<a href="https://github.com/sai11101989/sai11101989.github.io/tree/main/Course/SSD_Monsoon2025/Python5" target="_blank">Slides & Activity</a>]</td>
+</tr>
+<tr align="center" class="light-text-row">
+<td>16</td><td>13-Nov-2025 (Thursday) @ 2PM-3PM</td><td>Shell Session</td><td>[<a href="https://github.com/sai11101989/sai11101989.github.io/tree/main/Course/SSD_Monsoon2025/Shell" target="_blank">Slides & Activity</a>]</td>
+</tr>
+<tr align="center">
+<td>17</td><td>18-Nov-2025 (Tuesday) @ 9AM-10AM</td><td>Python Session 6</td><td>[<a href="https://github.com/sai11101989/sai11101989.github.io/tree/main/Course/SSD_Monsoon2025/Python6" target="_blank">Slides</a>]</td>
+</tr>	
+</table>
+<table align="center" width="10%" cellspacing="10" cellpadding="10" border="0">
+<tr><td><hr></td></tr>
+<table>
+<table align="center" width="10%" border="1">
+<tr><td colspan="5">
+<p align="left"> <b id="activity">&nbsp; Exams</b>&nbsp;&nbsp;&nbsp;[<a href="#home">go to top</a>]</p>
+</td>
+<tr align="center">
+<th>S.No</th><th>Exam Type</th><th>Announcement</th><th>Submission Due</th><th>Material</th>
+</tr>
+<tr align="center" class="light-text-row">
+<td>1</td><td>Assignment - SQL, NoSQL</td><td> 15-Aug-2025 </td><td> 5-Sept-2025</td><td>[<a href="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/sai11101989/sai11101989.github.io/main/Course/SSD_Monsoon2025/Assignment_1.pdf" target="_blank">Paper</a>]</td>
+</tr align="center">
+<tr align="center" class="light-text-row">
+<td>2</td><td>Assignment - Web</td><td> 6-Sept-2025</td><td>5-Oct-2025</td><td>[<a href="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/sai11101989/sai11101989.github.io/main/Course/SSD_Monsoon2025/Assignment_2.pdf" target="_blank">Paper</a>]</td>
+</tr>
+<tr align="center"  class="light-text-row">
+<td>3</td><td>Assignment - Python</td><td> 22-Oct-2025</td><td>15-Nov-2025</td><td>[<a href="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/sai11101989/sai11101989.github.io/main/Course/SSD_Monsoon2025/Assignment_3.pdf" target="_blank">Paper</a>]</td>
+</tr>
+<tr align="center" class="light-text-row">
+<td>4</td><td>SQL Practice</td><td> 5-Aug-2025</td><td>10-Aug-2025</td><td>[<a href="https://tinted-rumba-8c6.notion.site/Worked-out-Examples-2456a6248bf6800fa6cfc3e688a58ddd" target="_blank">Paper</a>]</td>
+</tr>
+<tr align="center" class="light-text-row">
+<td>5</td><td>QUIZ 1</td><td> 29-Aug-2025 2:30 PM</td><td>29-Aug-2025 3:30 PM</td><td>[<a href="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/sai11101989/sai11101989.github.io/main/Course/SSD_Monsoon2025/SSD_Quiz1_Key.pdf" target="_blank">Paper & Key</a>]</td>
+</tr>
+<tr align="center"  class="light-text-row">
+<td>6</td><td>QUIZ 2</td><td>31-Oct-2025 8:30 PM</td><td>31-Oct-2025 9:30 PM</td><td>[Paper][Key]</td>
+</tr>
+<tr align="center" class="light-text-row">
+<td>7</td><td>MID Exam</td><td>26-Sept-2025 10:00 PM</td><td>28-Sept-2025 10:00 PM</td><td>[<a href="https://sai11101989.github.io/Course/SSD_Monsoon2025/MID.html" target="_blank">Paper</a>]</td>
+</tr>
+<tr align="center">
+<td>8</td><td>Final Project</td><td> 1-Sept-2025</td><td>2-Dec-2025</td><td> </td>
+</tr>
+<tr align="center" class="light-text-row">
+<td>9</td><td>Class Activity - Profile Page</td><td> 26-Aug-2025</td><td>26-Aug-2025</td><td>[<a href="https://forms.office.com/r/6kpKVY0eqP" target="_blank">Submission</a>]</td>
+</tr>
+<tr align="center">
+<td>10</td><td>Class Activity - Python </td><td> 18-Nov-2025</td><td>18-Nov-2025</td><td>[Paper][Key]</td>
+</tr>
+</table>
+<table align="center" width="10%" border="0">
+<tr>
+<td><hr> <p align="left"><b id="staff">Staff:</b>&nbsp;&nbsp;&nbsp;[<a href="#home">go to top</a>] </p></td>
+<tr>
+<td><b>Instructors:</b> <a href="https://sites.google.com/view/abhishek-singh/home" target="_blank">Dr. Abhishek Singh</a>, <a href="https://sai11101989.github.io" target="_blank">Dr. Sai Anirudh Karre</a> </td>
+</tr>
+<tr>
+<td><b>Teaching Assistants:</b> TBA</td>
+</tr>
+<tr><td><hr></td></tr>
+</table>
+<table align="center" width="10%" cellspacing="10" cellpadding="10" border="0">
+<tr>
+<td><p align="center"><font face="Quicksand" size="3">
+Important Links: <a href="https://intranet.iiit.ac.in/offices/static/files/Almanac_M25_Final-Ver2.1.pdf" target="_blank">Monsoon 2026 Almanac</a> | <a href="https://intranet.iiit.ac.in/offices/static/files/Lecture%20timetable%20for%20Monsoon_2025_V1.2.pdf" target="_blank">Monsoon 2026 Lecture Timetable</a> | <a href="https://intranet.iiit.ac.in/offices/static/files/Tutorials%26LAB_Schedule_M25-V2.pdf" target="_blank">Monsoon 2026 Lab Timetable</a> | <a href="https://courses.iiit.ac.in/course/view.php?id=5324" target="_blank">Courses Portal</a> 
+</font></p><hr></td>
+</tr>
+<tr>
+<td>  <font face="Quicksand" size="3"> [<a href="#home">go to top</a>]<br><div align="center" id="txt"></div></font> 
+<p align="center"><font face="Quicksand" size="2">
+		Course site hosted by github.io <br>Course Policy credits to <a href="https://faculty.iiit.ac.in/~raghu.reddy/Home.html">Dr. Raghu Reddy</a> & <a href="https://karthikvaidhyanathan.com/">Dr. Karthik Vaidhyanathan</a><br>
+	<a href="https://serc.iiit.ac.in">Software Engineering Research Center</a>,<a href="https://iiit.ac.in">IIIT Hyderabad</a></font><br> </p><!--<br><p id="lastUpdated" align="center"><font face="Quicksand" size="2">Site Last Updated on: </font></p>--></td>
+</tr>
+</table>
+
+
+	</body>
+</html>
