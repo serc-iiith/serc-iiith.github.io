@@ -1,0 +1,115 @@
+//creates a db called saidb or switches to saidb
+use saidb
+
+//to view current database
+db
+
+//to drop database
+db.dropDatabase
+
+//display list of collection
+show collections
+
+//Create
+db.createCollection('user')
+
+//insert onerror
+db.user.insertOne( { name: 'Raghav Mittal'} );
+
+//insert
+db.user.insert({
+'name': 'Sai Anirudh Karre',
+'branch': 'M.Tech CSE',
+'joining_year':'2022'
+})
+
+//insert many
+db.user.insertMany(
+[{
+'name': 'Sai Anirudh Karre',
+'branch': 'M.Tech CSE',
+'joining_year':'2022',
+'city':'Hyderabad'
+},
+
+{'name': 'Chetan Sharma',
+'branch': 'M.Tech CASE',
+'joining_year':'2021',
+'city':'Chennai'
+},
+
+{'name': 'Sachin Tendulkar',
+'branch': 'M.Tech ECE',
+'joining_year':'2021',
+'city':'New Delhi'
+}])
+
+
+//search in collection
+db.user.find()
+
+//search in collection 
+db.user.find({joining_year:'2021'})
+
+//Multivalue Search
+db.user.find( { joining_year: { $in: [ "2021", "2022" ] } } )
+
+//expression search
+db.user.find( { name: "Chetan Sharma", "joining_year": { $gte: 2021 } } )
+
+//either or 
+db.user.find( {
+     name: 'Sachin Tendulkar',
+     $or: [ { "joining_year": { $gte: 2021 } }, { city: "Hyderabad" } ]
+} )
+
+
+//limit number of rows in collection search
+db.user.find().limit(3)
+
+//count number of rows in collection
+db.user.find().count()
+
+//update a rows
+db.user.updateOne({name: 'Sai Anirudh'},
+{$set: {'name': 'Charu Sharma',
+    'lang': 'SHELL',
+    'Instrutor_since': 2021
+}}, {upsert: true})
+
+//update increment operator
+db.user.update({name: 'Sachin Tendulkar'},
+{$inc:{
+    joining_year: 1
+}})
+
+//rename column name in Collection
+db.user.update({name: 'Sachin Tendulkar'},
+{$rename:{
+    joining_date: 'year'
+}})
+
+//updatemany
+db.user.updateMany(
+  { year: { $lt: 2022 } },
+  {
+    $set: { city: 'Hyderabad', branch: 'M.Tech EEE' }
+  }
+)
+
+//remove row in collection
+db.user.remove({name:'Chetan Sharma'})
+
+//regular expression
+db.user.find({joining_date: {$lt: 2019}})
+db.user.find({joining_date: {$lte: 2019}})
+db.user.find({joining_date: {$gt: 2019}})
+db.user.find({joining_date: {$gte: 2019}})
+
+//delete all records in collection
+db.user.deleteMany({})
+db.movies.deleteMany( { name: "Sachin Tendulkar" } )
+db.movies.deleteOne( { name: "Lalit Mohan" } )
+
+//delete collection
+db.user.drop()
