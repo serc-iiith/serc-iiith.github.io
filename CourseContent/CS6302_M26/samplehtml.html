@@ -1,0 +1,460 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="One self-contained HTML5 page that demonstrates (almost) every modern HTML element and feature for teaching." />
+  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0b0b0f">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Uncomment to demonstrate base: affects all relative links
+  <base target="_blank"> -->
+  <title>HTML Super Demo — One File to Teach (Almost) Everything</title>
+  <link rel="icon" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128'><rect width='128' height='128' rx='16' fill='%23f5f5f5'/><path d='M32 88l16-64h32l16 64h-16l-4-16H52l-4 16H32zm24-28h16l-8-32-8 32z' fill='%23222'/></svg>">
+  <style>
+    :root { --bg: #ffffff; --fg: #111827; --muted: #6b7280; --brand: #2563eb; --radius: 12px; }
+    @media (prefers-color-scheme: dark) { :root { --bg:#0b0b0f; --fg:#f5f5f5; --muted:#9aa3b2; } }
+    *{box-sizing:border-box}
+    body{margin:0;font:16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji"; background:var(--bg); color:var(--fg)}
+    a{color:var(--brand); text-underline-offset:.2em}
+    header.site{position:sticky;top:0;z-index:10;background:color-mix(in oklab, var(--bg), transparent 0%);backdrop-filter:saturate(1.2) blur(6px);border-bottom:1px solid #0003}
+    header .bar{display:grid;grid-template-columns:1fr auto;gap:1rem;align-items:center;padding:.5rem 1rem}
+    header nav a{margin-right:.75rem}
+    main{display:grid;grid-template-columns:260px 1fr; gap:1rem; padding:1rem}
+    nav#toc{position:sticky; top:3.2rem; align-self:start; max-height:calc(100dvh - 4rem); overflow:auto; border:1px solid #0002; border-radius:var(--radius); padding:.5rem}
+    nav#toc a{display:block;padding:.15rem .35rem;border-radius:8px}
+    nav#toc a:hover{background:#0001}
+    section{border:1px solid #0002; border-radius:var(--radius); padding:1rem; background:color-mix(in srgb, var(--bg), #fff 8%)}
+    h2{margin-top:0}
+    .grid{display:grid; gap:.75rem}
+    .grid-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .grid-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+    @media (max-width: 900px){ main{grid-template-columns:1fr} }
+    .box{border:1px dashed #0003; border-radius:10px; padding:.5rem}
+    figure{margin:0}
+    .pill{display:inline-block;padding:.2rem .5rem;border:1px solid #0002;border-radius:999px;background:#fff3}
+    .muted{color:var(--muted)}
+    .kbd{border:1px solid #0003;border-bottom-width:3px;border-radius:6px;padding:.1rem .35rem;background:linear-gradient(#fff,#eee)}
+    .cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.6rem}
+    .card{border:1px solid #0002;border-radius:12px;padding:.75rem;background:#fff2}
+    .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
+    details{border:1px solid #0002; border-radius:10px; padding:.5rem .8rem; background:#fff2}
+    dialog{border:1px solid #0003;border-radius:12px;padding:1rem}
+    table{width:100%; border-collapse:collapse}
+    th, td{border:1px solid #0002; padding:.4rem .5rem; text-align:left}
+    caption{caption-side:top; font-weight:600; padding:.4rem}
+    .two-col{columns:280px; column-gap:1rem}
+    .two-col > *{break-inside:avoid}
+    .demo-iframe{width:100%; aspect-ratio:16/9; border:1px solid #0002; border-radius:12px}
+  </style>
+</head>
+<body>
+  <header class="site" role="banner">
+    <div class="bar">
+      <strong>HTML Super Demo</strong>
+      <nav aria-label="Top navigation">
+        <a href="#text">Text & Semantics</a>
+        <a href="#media">Images, Audio, Video</a>
+        <a href="#embeds">Embeds & SVG/Canvas</a>
+        <a href="#forms">Forms</a>
+        <a href="#tables">Tables & Lists</a>
+        <a href="#interactive">Interactive</a>
+        <a href="#scripting">Scripting & Web Components</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <nav id="toc" aria-label="On-page Table of Contents">
+      <strong>Contents</strong>
+      <a href="#document">Document & Metadata</a>
+      <a href="#text">Text & Semantics</a>
+      <a href="#links">Links & Navigation</a>
+      <a href="#media">Images & Media</a>
+      <a href="#embeds">Embeds, SVG & Canvas</a>
+      <a href="#forms">Forms & Controls</a>
+      <a href="#tables">Tables & Lists</a>
+      <a href="#interactive">Interactive Elements</a>
+      <a href="#international">Internationalization</a>
+      <a href="#a11y">Accessibility hints</a>
+      <a href="#scripting">Scripting, Template & Dialog</a>
+      <a href="#download">Download this demo</a>
+    </nav>
+
+    <article>
+      <section id="document">
+        <h2>Document & Metadata</h2>
+        <p>This page includes <code>&lt;!doctype html&gt;</code>, <code>lang</code>/<code>dir</code> on <code>html</code>, common <code>&lt;meta&gt;</code> tags, <code>&lt;link rel="icon"&gt;</code>, <code>&lt;title&gt;</code>, and a (commented) <code>&lt;base&gt;</code>.</p>
+        <p class="muted">Use DevTools &rarr; Elements to inspect the head.</p>
+        <noscript><p class="box"><strong>Noscript:</strong> Your browser has scripting disabled; some interactive bits won’t run.</p></noscript>
+      </section>
+
+      <section id="text">
+        <h2>Text & Semantics</h2>
+        <div class="two-col">
+          <div>
+            <h1>Heading 1</h1>
+            <h2>Heading 2</h2>
+            <h3>Heading 3</h3>
+            <h4>Heading 4</h4>
+            <h5>Heading 5</h5>
+            <h6>Heading 6</h6>
+            <p>Paragraph with <em>emphasis</em>, <strong>strong</strong>, <i>i</i>, <b>b</b>, <u>u</u>, <s>del</s>, <mark>mark</mark>, <small>small</small>, <sup>sup</sup> and <sub>sub</sub>, a line<br>break, and an <abbr title="World Health Organization">WHO</abbr> abbreviation.</p>
+            <p>Inline semantics: <dfn id="dfn-api">API</dfn>, <var>x</var> = <code>Math.random()</code>, press <kbd class="kbd">Ctrl</kbd> + <kbd class="kbd">S</kbd>, output <samp>{"ok":true}</samp>, <wbr>verylongstringthatneeds<wbr>breaks.</p>
+            <p>Quoting: <q cite="https://example.com/quote">Short inline quote</q>.</p>
+            <blockquote cite="https://www.w3.org/TR/html52/">
+              <p>Blockquote with <cite>source</cite> URL in <code>cite</code> attribute.</p>
+            </blockquote>
+            <address>
+              <strong>Address:</strong> 123 Demo Street, Web City<br>
+              Contact: <a href="mailto:teacher@example.edu">teacher@example.edu</a>
+            </address>
+            <p>Time: Class starts <time datetime="2025-08-25T10:00">Aug 25, 2025, 10:00</time>.</p>
+          </div>
+          <div>
+            <figure>
+              <img alt="Decorative SVG placeholder" width="300" height="180" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 180'><defs><linearGradient id='g' x1='0' x2='1'><stop offset='0' stop-color='%23dfe7fd'/><stop offset='1' stop-color='%23c7d2fe'/></linearGradient></defs><rect width='300' height='180' fill='url(%23g)'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='20' fill='%23333'>Figure Image</text></svg>">
+              <figcaption>Figure with <code>&lt;figcaption&gt;</code>.</figcaption>
+            </figure>
+            <p>Ruby annotation for East Asian text: <ruby>漢<rt>kan</rt>字<rt>ji</rt><rp>(</rp><rt>kanji</rt><rp>)</rp></ruby></p>
+            <p><span class="pill" contenteditable="true" spellcheck="true">contenteditable true</span> &nbsp; <span class="pill" contenteditable="true" spellcheck="false">spellcheck false</span></p>
+          </div>
+        </div>
+      </section>
+
+      <section id="links">
+        <h2>Links & Navigation</h2>
+        <p>
+          <a href="#text">In-page anchor</a> ·
+          <a href="https://example.com" target="_blank" rel="noopener">External</a> ·
+          <a href="tel:+18005551234">Telephone</a> ·
+          <a href="mailto:teacher@example.edu?subject=HTML%20Demo">Email</a> ·
+          <a download="hello.txt" href="data:text/plain,Hello%20HTML%20Class!">Download (data URI)</a>
+        </p>
+        <nav aria-label="Breadcrumb">
+          <ol>
+            <li><a href="#document">Home</a></li>
+            <li><a href="#text">Text</a></li>
+            <li aria-current="page">Links</li>
+          </ol>
+        </nav>
+        <p>Image map:</p>
+        <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='140'><rect width='400' height='140' fill='%23eef2ff'/><circle cx='70' cy='70' r='40' fill='%2393c5fd'/><rect x='140' y='30' width='100' height='80' fill='%2360a5fa'/><polygon points='300,30 370,70 300,110' fill='%233b82f6'/><text x='70' y='75' text-anchor='middle' font-family='sans-serif' font-size='12'>#text</text><text x='190' y='75' text-anchor='middle' font-family='sans-serif' font-size='12'>#media</text><text x='325' y='75' text-anchor='middle' font-family='sans-serif' font-size='12'>#forms</text></svg>" usemap="#mapdemo" alt="Clickable shapes: circle links to Text, rect to Media, triangle to Forms" width="400" height="140">
+        <map name="mapdemo">
+          <area shape="circle" coords="70,70,40" href="#text" alt="Go to Text section">
+          <area shape="rect" coords="140,30,240,110" href="#media" alt="Go to Media section">
+          <area shape="poly" coords="300,30,370,70,300,110" href="#forms" alt="Go to Forms section">
+        </map>
+      </section>
+
+      <section id="media">
+        <h2>Images & Media</h2>
+        <div class="grid grid-3">
+          <div class="card">
+            <h3>Picture element</h3>
+            <picture>
+              <source type="image/svg+xml" media="(min-width:800px)" srcset="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 480 200'><rect width='480' height='200' fill='%23fee2e2'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='24' fill='%239b1c1c'>Large SVG</text></svg>">
+              <source type="image/svg+xml" media="(min-width:400px)" srcset="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 360 160'><rect width='360' height='160' fill='%23dcfce7'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='20' fill='%23065f46'>Medium SVG</text></svg>">
+              <img width="240" height="120" alt="Small SVG fallback" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 120'><rect width='240' height='120' fill='%23dbeafe'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='16' fill='%231e3a8a'>Small SVG</text></svg>">
+            </picture>
+          </div>
+          <div class="card">
+            <h3>Audio</h3>
+            <audio controls>
+              <source src="data:audio/wav;base64,UklGRjQAAABXQVZFZm10IBAAAAABAAEAgD4AAIA+AAABAAgAZGF0YQAAAAA=" type="audio/wav">
+              Your browser does not support the audio element.
+            </audio>
+            <p class="muted">Tiny silent WAV via data URI for offline demo.</p>
+          </div>
+          <div class="card">
+            <h3>Video + captions</h3>
+            <video controls width="300" height="170" poster="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 170'><rect width='300' height='170' fill='%23f3f4f6'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='18' fill='%23444'>Poster only</text></svg>">
+              <track default kind="captions" srclang="en" label="English" src="data:text/vtt,WEBVTT%0A%0A00:00.000%20--%3E%2000:02.000%0ADemo%20caption" />
+              Sorry, no inline video provided (kept small); captions track included.
+            </video>
+          </div>
+        </div>
+      </section>
+
+      <section id="embeds">
+        <h2>Embeds, Inline SVG & Canvas</h2>
+        <div class="grid grid-3">
+          <div class="card">
+            <h3>iframe (srcdoc)</h3>
+            <iframe class="demo-iframe" title="Sandboxed iframe" sandbox srcdoc="&lt;!doctype html&gt;&lt;meta charset='utf-8'&gt;&lt;style&gt;body{font:14px/1.5 system-ui;margin:0;padding:1rem}&lt;/style&gt;&lt;h3&gt;Hello from srcdoc iframe&lt;/h3&gt;&lt;p&gt;This content is fully inline; no network needed.&lt;/p&gt;"></iframe>
+          </div>
+          <div class="card">
+            <h3>object & embed</h3>
+            <object type="image/svg+xml" data="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 160 100'><rect width='160' height='100' rx='12' fill='%23e0f2fe'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='16' fill='%23037553'>object</text></svg>" width="160" height="100">Fallback if unsupported</object>
+            <embed type="image/svg+xml" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 160 100'><rect width='160' height='100' rx='12' fill='%23ffedd5'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='16' fill='%239a3412'>embed</text></svg>" width="160" height="100" />
+          </div>
+          <div class="card">
+            <h3>Inline SVG</h3>
+            <svg viewBox="0 0 200 120" width="200" height="120" role="img" aria-label="SVG shapes">
+              <defs>
+                <linearGradient id="sg" x1="0" x2="1"><stop offset="0" stop-color="#bae6fd"/><stop offset="1" stop-color="#93c5fd"/></linearGradient>
+              </defs>
+              <rect width="200" height="120" fill="url(#sg)" rx="12"/>
+              <circle cx="60" cy="60" r="30" fill="#0ea5e9"/>
+              <rect x="100" y="35" width="80" height="50" rx="8" fill="#0284c7"/>
+              <text x="100" y="105" text-anchor="middle" font-family="system-ui" font-size="14">Inline SVG</text>
+            </svg>
+          </div>
+        </div>
+        <div class="card" style="margin-top:.75rem">
+          <h3>Canvas</h3>
+          <canvas id="canvas" width="400" height="120" class="box"></canvas>
+        </div>
+      </section>
+
+      <section id="forms">
+        <h2>Forms & Controls</h2>
+        <form id="calc" class="grid grid-3" oninput="sum.value = Number(a.value||0)+Number(b.value||0)">
+          <fieldset class="card" style="grid-column:1/-1">
+            <legend>Basic inputs</legend>
+            <div class="cards">
+              <label>Text <input name="t" type="text" placeholder="Your name" autocomplete="name" required></label>
+              <label>Email <input name="e" type="email" placeholder="you@school.edu" required></label>
+              <label>Password <input name="p" type="password" minlength="6"></label>
+              <label>URL <input type="url" placeholder="https://"></label>
+              <label>Tel <input type="tel" placeholder="+1 555 555"></label>
+              <label>Search <input type="search" placeholder="Find…"></label>
+              <label>Number <input type="number" min="0" max="10" step="0.5"></label>
+              <label>Range <input type="range" min="0" max="100" value="50"></label>
+              <label>Date <input type="date"></label>
+              <label>Time <input type="time"></label>
+              <label>Color <input type="color" value="#2563eb"></label>
+              <label>File <input type="file" multiple></label>
+            </div>
+          </fieldset>
+          <fieldset class="card">
+            <legend>Select, datalist</legend>
+            <label>Choose one
+              <select>
+                <optgroup label="Group A"><option>Alpha</option><option>Beta</option></optgroup>
+                <optgroup label="Group B"><option>Gamma</option><option>Delta</option></optgroup>
+              </select>
+            </label>
+            <label>With datalist
+              <input list="fruits" placeholder="Type…">
+              <datalist id="fruits"><option>Apple</option><option>Banana</option><option>Cherry</option></datalist>
+            </label>
+          </fieldset>
+          <fieldset class="card">
+            <legend>Checks & radios</legend>
+            <label><input type="checkbox" checked> Subscribe</label><br>
+            <label><input type="checkbox"> Accept terms</label><br>
+            <label><input type="radio" name="r" checked> One</label>
+            <label><input type="radio" name="r"> Two</label>
+          </fieldset>
+          <fieldset class="card">
+            <legend>Textarea</legend>
+            <textarea rows="4" placeholder="Write here…"></textarea>
+          </fieldset>
+          <fieldset class="card">
+            <legend>Constraint validation</legend>
+            <label>Pattern (3 letters)
+              <input pattern="[A-Za-z]{3}" placeholder="abc" required>
+            </label>
+            <p><button type="submit">Submit</button> <button type="reset">Reset</button></p>
+          </fieldset>
+          <fieldset class="card">
+            <legend>&lt;output&gt; + calculation</legend>
+            <label>A <input id="a" type="number" value="2"></label>
+            <label>B <input id="b" type="number" value="3"></label>
+            <p>Sum: <output name="sum" for="a b">5</output></p>
+          </fieldset>
+          <fieldset class="card">
+            <legend>Data, meter & progress</legend>
+            <p>Dataset value: <data value="42">Forty‑two</data></p>
+            <label>Meter (score): <meter min="0" max="100" low="40" high="80" optimum="90" value="65">65</meter></label>
+            <p>Progress: <progress id="prog" max="100" value="0">0%</progress></p>
+          </fieldset>
+        </form>
+      </section>
+
+      <section id="tables">
+        <h2>Tables & Lists</h2>
+        <div class="grid grid-2">
+          <div>
+            <table>
+              <caption>Sample Table</caption>
+              <colgroup>
+                <col span="1" style="background:#00000008">
+                <col>
+                <col>
+              </colgroup>
+              <thead>
+                <tr><th scope="col">Item</th><th scope="col">Qty</th><th scope="col">Price</th></tr>
+              </thead>
+              <tbody>
+                <tr><th scope="row">Alpha</th><td>2</td><td>$3</td></tr>
+                <tr><th scope="row">Beta</th><td>5</td><td>$4</td></tr>
+                <tr><th scope="row">Gamma</th><td>1</td><td>$7</td></tr>
+              </tbody>
+              <tfoot>
+                <tr><th scope="row" colspan="2">Total</th><td>$25</td></tr>
+              </tfoot>
+            </table>
+          </div>
+          <div>
+            <h3>Lists</h3>
+            <ul>
+              <li>Unordered list</li>
+              <li>Nested
+                <ul>
+                  <li>Child</li>
+                </ul>
+              </li>
+            </ul>
+            <ol start="3" reversed>
+              <li>Ordered reversed (value set)</li>
+              <li value="10">Manual value = 10</li>
+            </ol>
+            <dl>
+              <dt>HTML</dt><dd>Markup language for documents on the web.</dd>
+              <dt>CSS</dt><dd>Style sheet language for presentation.</dd>
+            </dl>
+            <hr>
+            <p>Horizontal rule above separates content.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="interactive">
+        <h2>Interactive Elements</h2>
+        <div class="grid grid-3">
+          <div class="card">
+            <h3>&lt;details&gt;</h3>
+            <details open>
+              <summary>Click to toggle details</summary>
+              <p>Expandable content without JavaScript.</p>
+            </details>
+          </div>
+          <div class="card">
+            <h3>&lt;dialog&gt;</h3>
+            <button id="openDialog">Open dialog</button>
+            <dialog id="d">
+              <form method="dialog">
+                <p><strong>Hello!</strong> I am a native modal dialog.</p>
+                <menu>
+                  <button value="cancel">Cancel</button>
+                  <button value="ok">OK</button>
+                </menu>
+              </form>
+            </dialog>
+          </div>
+          <div class="card">
+            <h3>Hidden & translate</h3>
+            <p><button id="toggleHidden">Toggle hidden section</button></p>
+            <p id="secret" hidden>This text was hidden using the <code>hidden</code> attribute.</p>
+            <p translate="no">Brand name (no translate): WebX</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="international">
+        <h2>Internationalization (i18n) & Direction</h2>
+        <p lang="fr">Texte en <em>français</em> avec <code>lang="fr"</code>.</p>
+        <p><bdo dir="rtl">This text is forced RTL with bdo.</bdo></p>
+        <p>Bi-directional isolate with <code>bdi</code>: <bdi dir="auto">مرحبا</bdi> mixed with English.</p>
+      </section>
+
+      <section id="a11y">
+        <h2>Accessibility Hints</h2>
+        <ul>
+          <li>Use semantic elements (<code>header</code>, <code>nav</code>, <code>main</code>, <code>section</code>, <code>article</code>, <code>aside</code>, <code>footer</code>).</li>
+          <li>Associate labels with inputs (<code>label for</code> or wrapping).</li>
+          <li>Alt text for images, <code>figure/figcaption</code> for complex visuals.</li>
+          <li>Use <code>aria-label</code> where semantics aren’t sufficient.</li>
+        </ul>
+      </section>
+
+      <section id="scripting">
+        <h2>Scripting, Template & Web Components</h2>
+        <div class="grid grid-3">
+          <div class="card">
+            <h3>&lt;template&gt; cloning</h3>
+            <button id="addCard">Add card from template</button>
+            <div id="cardHost" class="cards" style="margin-top:.5rem"></div>
+            <template id="cardTpl">
+              <div class="card">Template‑instantiated card at <time></time></div>
+            </template>
+          </div>
+          <div class="card">
+            <h3>Custom Element</h3>
+            <hello-box mood="excited">Web Components slot content!</hello-box>
+            <template id="helloTemplate">
+              <style>:host{display:block;border:1px solid #0003;border-radius:12px;padding:.6rem;background:#fff2}</style>
+              <p><strong>Hello</strong> from <code>&lt;hello-box&gt;</code> — mood: <span id="m"></span></p>
+              <slot></slot>
+            </template>
+          </div>
+          <div class="card">
+            <h3>Dataset & data-* attributes</h3>
+            <div id="ds" class="box" data-topic="html" data-level="advanced">data‑ attributes live here</div>
+            <p class="muted">Open console: <code>document.getElementById('ds').dataset</code></p>
+          </div>
+        </div>
+      </section>
+
+      <section id="download">
+        <h2>Download this Demo</h2>
+        <p>You can save this page directly from the browser (File → Save), or <a id="selfDownload" download="html-super-demo.html" href="#">download a generated copy</a>.</p>
+      </section>
+
+      <footer class="muted" style="margin-top:2rem">
+        <p>&copy; 2025 HTML Super Demo. Licensed for classroom use. Made to be fully offline (all assets are data URIs).</p>
+      </footer>
+    </article>
+  </main>
+
+  <script type="module">
+    // Canvas demo
+    const cv = document.getElementById('canvas');
+    if (cv?.getContext) {
+      const ctx = cv.getContext('2d');
+      const g = ctx.createLinearGradient(0,0,400,0); g.addColorStop(0,'#dbeafe'); g.addColorStop(1,'#93c5fd');
+      ctx.fillStyle = g; ctx.fillRect(0,0,cv.width,cv.height);
+      ctx.fillStyle = '#1e3a8a'; ctx.font = '20px system-ui'; ctx.fillText('Canvas 2D API — gradient + text', 12, 66);
+      ctx.strokeStyle = '#2563eb'; ctx.lineWidth = 8; ctx.strokeRect(6,6,cv.width-12,cv.height-12);
+    }
+
+    // Dialog
+    const d = document.getElementById('d');
+    document.getElementById('openDialog')?.addEventListener('click', ()=> d.showModal());
+
+    // Hidden toggle
+    document.getElementById('toggleHidden')?.addEventListener('click', ()=>{
+      const s = document.getElementById('secret'); s.hidden = !s.hidden;
+    });
+
+    // Progress animation
+    const prog = document.getElementById('prog');
+    let v = 0; setInterval(()=>{ if(!prog) return; v = (v+5)%105; prog.value = v; prog.textContent = v + '%'; }, 500);
+
+    // Template cloning
+    const host = document.getElementById('cardHost');
+    const tpl = document.getElementById('cardTpl');
+    document.getElementById('addCard')?.addEventListener('click', ()=>{
+      const node = tpl.content.cloneNode(true);
+      node.querySelector('time').textContent = new Date().toLocaleTimeString();
+      host.appendChild(node);
+    });
+
+    // Web Component
+    class HelloBox extends HTMLElement {
+      constructor(){ super(); const s = this.attachShadow({mode:'open'}); const t = document.getElementById('helloTemplate'); s.appendChild(t.content.cloneNode(true)); }
+      connectedCallback(){ this.shadowRoot.getElementById('m').textContent = this.getAttribute('mood') || 'neutral'; }
+    }
+    customElements.define('hello-box', HelloBox);
+
+    // Self-download current HTML
+    const a = document.getElementById('selfDownload');
+    if (a) {
+      const blob = new Blob([document.documentElement.outerHTML], {type:'text/html'});
+      a.href = URL.createObjectURL(blob);
+    }
+  </script>
+</body>
+</html>
