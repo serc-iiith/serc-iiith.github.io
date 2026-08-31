@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>JavaScript Classes, Objects, Getters & Setters</title>
+<style>
+  body { font-family: Arial, sans-serif; max-width: 800px; margin: 20px auto; line-height: 1.6; }
+  h2 { color: #2c6db8; }
+  pre { background: #f4f8ff; border-left: 4px solid #2c6db8; padding: 10px; border-radius: 5px; white-space: pre-wrap; font-family: monospace; }
+  button { margin-top: 10px; padding: 8px 14px; cursor: pointer; }
+  #output { background: #e7f0fd; border-left: 4px solid #2c6db8; padding: 10px; margin-top: 15px; white-space: pre-wrap; font-family: monospace; }
+</style>
+</head>
+<body>
+
+<h1>JavaScript Classes, Objects, Getter & Setter</h1>
+
+<section>
+  <h2>1. Class and Object Example</h2>
+  <pre>
+class Person {
+  constructor(firstName, lastName) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+  }
+
+  fullName() {
+    return this.firstName + " " + this.lastName;
+  }
+}
+
+const person1 = new Person("John", "Doe");
+console.log(person1.fullName()); // John Doe
+  </pre>
+  <button onclick="classObjectExample()">Run Example</button>
+</section>
+
+<section>
+  <h2>2. Getter and Setter Example</h2>
+  <pre>
+class Rectangle {
+  constructor(width, height) {
+    this.width = width;
+    this.height = height;
+  }
+
+  get area() {
+    return this.width * this.height;
+  }
+
+  set area(value) {
+    // Assuming square if area set
+    this.width = this.height = Math.sqrt(value);
+  }
+}
+
+const rect = new Rectangle(4, 5);
+console.log(rect.area);  // 20
+rect.area = 36;
+console.log(rect.width, rect.height); // 6, 6
+  </pre>
+  <button onclick="getterSetterExample()">Run Getter/Setter Example</button>
+</section>
+
+<div id="output"></div>
+
+<script>
+  function classObjectExample() {
+    class Person {
+      constructor(firstName, lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+      }
+      fullName() {
+        return this.firstName + " " + this.lastName;
+      }
+    }
+    const person1 = new Person("John", "Doe");
+    document.getElementById('output').textContent = "Full name: " + person1.fullName();
+  }
+
+  function getterSetterExample() {
+    class Rectangle {
+      constructor(width, height) {
+        this.width = width;
+        this.height = height;
+      }
+      get area() {
+        return this.width * this.height;
+      }
+      set area(value) {
+        this.width = this.height = Math.sqrt(value);
+      }
+    }
+    const rect = new Rectangle(4, 5);
+    let output = "Initial area: " + rect.area + "\n";
+    rect.area = 36;
+    output += "After setting area to 36:\n";
+    output += "Width: " + rect.width + ", Height: " + rect.height;
+    document.getElementById('output').textContent = output;
+  }
+</script>
+
+</body>
+</html>

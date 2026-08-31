@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>JavaScript Variable Scopes</title>
+<style>
+  body { font-family: Arial, sans-serif; padding: 20px; max-width: 900px; line-height: 1.5; }
+  h2 { color: #2a6ebb; }
+  button { margin: 8px 0; padding: 8px 14px; cursor: pointer; }
+  pre { background: #f4f8ff; padding: 10px; border-radius: 5px; font-family: monospace; white-space: pre-wrap; }
+  .output { margin-top: 10px; background: #e1f0ff; border-left: 4px solid #2a6ebb; padding: 10px; font-family: monospace; white-space: pre-wrap; }
+</style>
+</head>
+<body>
+
+<h1>JavaScript Variable Scopes Explained</h1>
+
+<button onclick="publicExample()">Public Variable Example</button><br>
+<button onclick="privateExample()">Private Variable Example</button><br>
+<button onclick="privilegedExample()">Privileged Method Example</button><br>
+<button onclick="staticExample()">Static Property Example</button><br>
+<button onclick="prototypeExample()">Prototype Property Example</button><br>
+
+<div id="output" class="output"></div>
+
+<script>
+  // Public Variable
+  function publicExample() {
+    function Car(make) {
+      this.make = make; // public property
+    }
+    const car1 = new Car("Toyota");
+    let output = `car1.make (public) = ${car1.make}\n`;
+    car1.make = "Honda";
+    output += `After modification: car1.make = ${car1.make}`;
+    document.getElementById('output').textContent = output;
+  }
+
+  // Private Variable with closure
+  function privateExample() {
+    function Secret() {
+      let secret = "Private Secret"; // private variable
+      this.getSecret = function() {
+        return secret;
+      };
+    }
+    const s = new Secret();
+    let output = `Cannot access secret directly: s.secret = ${s.secret}\n`;
+    output += `Access via privileged method: s.getSecret() = ${s.getSecret()}`;
+    document.getElementById('output').textContent = output;
+  }
+
+  // Privileged Method example: access private variable via privileged method
+  function privilegedExample() {
+    function Person(name) {
+      let _name = name; // private
+      this.getName = function() {  // privileged method
+        return _name;
+      };
+      this.setName = function(newName) {
+        _name = newName;
+      };
+    }
+    const p = new Person("Alice");
+    let output = `Original name (via privileged method): ${p.getName()}\n`;
+    p.setName("Bob");
+    output += `New name (after setName): ${p.getName()}\n`;
+    output += `Direct access: p._name = ${p._name}`;
+    document.getElementById('output').textContent = output;
+  }
+
+  // Static Property example
+  function staticExample() {
+    function Count() {}
+    Count.counter = 0; // static property
+
+    Count.increment = function() {
+      return ++Count.counter;
+    };
+
+    let output = "";
+    output += `Counter initial value (static): ${Count.counter}\n`;
+    Count.increment();
+    Count.increment();
+    output += `Counter after 2 increments: ${Count.counter}\n`;
+
+    let c1 = new Count();
+    let c2 = new Count();
+
+    output += `Accessing static property via instance (undefined): c1.counter = ${c1.counter}\n`;
+    output += `Accessing static property via class: Count.counter = ${Count.counter}`;
+    document.getElementById('output').textContent = output;
+  }
+
+  // Prototype Property example
+  function prototypeExample() {
+    function Animal(name) {
+      this.name = name;
+    }
+    Animal.prototype.speak = function() {
+      return this.name + " makes a sound.";
+    };
+
+    const dog = new Animal("Dog");
+    const cat = new Animal("Cat");
+    let output = dog.speak() + "\n" + cat.speak() + "\n";
+    output += "Check if speak is own property: " + dog.hasOwnProperty("speak");
+    document.getElementById('output').textContent = output;
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,86 @@
+<html>
+<head><title>Promise</title>
+<body>
+<script>
+
+class Calculator {
+  constructor() {
+    this.history = [];
+  }
+
+  add(a, b) {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        const result = a + b;
+        this.history.push({ op: '+', a, b, result });
+        resolve(result);
+      }, 1000); // Simulate delay
+    });
+  }
+
+  subtract(a, b) {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        const result = a - b;
+        this.history.push({ op: '-', a, b, result });
+        resolve(result);
+      }, 1000);
+    });
+  }
+
+  multiply(a, b) {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        const result = a * b;
+        this.history.push({ op: '*', a, b, result });
+        resolve(result);
+      }, 1000);
+    });
+  }
+
+  divide(a, b) {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        if (b === 0) {
+          reject(new Error('Cannot divide by zero'));
+        } else {
+          const result = a / b;
+          this.history.push({ op: '/', a, b, result });
+          resolve(result);
+        }
+      }, 1000);
+    });
+  }
+}
+
+async function main() {
+  const calc = new Calculator();
+
+  try {
+    const result1 = await calc.add(5, 3);
+    document.write(`5 + 3 = ${result1}`);
+	document.write("<br><br>");
+
+    const result2 = await calc.multiply(result1, 2);
+    document.write(`(${result1}) * 2 = ${result2}`);
+	document.write("<br><br>");
+
+    const result3 = await calc.divide(result2, 2);
+   document.write(`(${result2}) / 2 = ${result3}`);
+	document.write("<br><br>");
+
+    document.write('Calculation history:', calc.history);
+	document.write("<br><br>");
+
+  } catch (error) {
+    console.error('An error occurred:', error.message);
+  }
+}
+
+main();
+
+  </script>
+
+
+</body>
+</html>

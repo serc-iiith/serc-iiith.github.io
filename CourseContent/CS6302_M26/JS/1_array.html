@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript Array: Full Feature Demo</title>
+</head>
+<body>
+  <h2>JavaScript Array Data Structure: Complete Feature Demo</h2>
+  <p>Open the browser console (Ctrl+Shift+J) to view the output of all Array features.</p>
+  <script>
+    // 1. Creation and Initialization
+    const arr1 = [1, 'a', true];
+    const arr2 = Array(4); // [ <4 empty items> ]
+    const arr3 = Array.of(10, 20, 30);
+    const arr4 = Array.from('hello'); // ['h','e','l','l','o']
+
+    // 2. Access Elements
+    console.log('First:', arr1, 'Last:', arr1[arr1.length-1]);
+
+    // 3. Basic Properties
+    console.log('Array length:', arr1.length);
+
+    // 4. Adding/Removing: push, pop, shift, unshift
+    const stack = [];
+    stack.push(1); stack.push(2);
+    stack.pop();
+    stack.unshift(0);
+    stack.shift();
+    console.log('After push/pop/shift/unshift:', stack);
+
+    // 5. Splice/slice (insert, remove, copy)
+    let spliceArr = [1,2,3,4];
+    spliceArr.splice(1,2,'a','b'); // removes 2,3, inserts 'a','b'
+    console.log('After splice:', spliceArr);
+    const sliced = arr3.slice(1,3);
+    console.log('Slice:', sliced);
+
+    // 6. Iteration: for, forEach, for...of, map
+    arr4.forEach((val,i) => console.log('forEach', i, val));
+    for (let i=0; i< arr1.length; i++) console.log('for loop', arr1[i]);
+    for (const x of arr3) console.log('for...of', x);
+
+    // 7. Transformation: map, flatMap
+    const mapped = arr3.map(x => x * 2);
+    const flatMapped = [1, 2, 3].flatMap(x => [x, x*2]);
+    console.log('Map:', mapped, 'FlatMap:', flatMapped);
+
+    // 8. Filtering: filter
+    const nums = [1,2,3,4,5,6];
+    const evens = nums.filter(n => n % 2 === 0);
+    console.log('Filter (evens):', evens);
+
+    // 9. Reducing: reduce, reduceRight
+    const sum = nums.reduce((acc, val) => acc + val, 0);
+    const rightConcat = ['a','b','c'].reduceRight((acc, v) => acc + v, "");
+    console.log('Reduce sum:', sum, 'ReduceRight concat:', rightConcat);
+
+    // 10. Search: find, findIndex, includes, indexOf, lastIndexOf
+    console.log('Find >3:', nums.find(n => n > 3));
+    console.log('FindIndex >3:', nums.findIndex(n => n > 3));
+    console.log('Includes 2:', nums.includes(2));
+    console.log('IndexOf 2:', nums.indexOf(2));
+
+    // 11. Sorting: sort, reverse
+    let sortArr = [3,1,4,1,5];
+    sortArr.sort((a, b) => a - b);
+    sortArr.reverse();
+    console.log('Sort/reverse:', sortArr);
+
+    // 12. Joining, toString
+    console.log('Join:', arr1.join('-'));
+    console.log('ToString:', arr1.toString());
+
+    // 13. Concat, Spread
+    const merged = arr1.concat(nums);
+    const spreadMerged = [...arr1, ...nums];
+    console.log('Concat:', merged, 'Spread:', spreadMerged);
+
+    // 14. Static Methods and Checks
+    console.log('isArray arr1:', Array.isArray(arr1));
+    const arrayLike = {0: 'a', 1: 'b', length: 2};
+    const fromArrayLike = Array.from(arrayLike);
+    console.log('Array.from:', fromArrayLike);
+    console.log('Array.of:', Array.of('x', 1, null));
+
+    // 15. Fill, CopyWithin
+    let fillArr = [0,0,0,0];
+    fillArr.fill(7,1,3);
+    fillArr.copyWithin(2,0,2);
+    console.log('Fill/copyWithin:', fillArr);
+
+    // 16. Destructuring, Spread, Rest
+    let [first, ...rest] = arr3;
+    console.log('Destructuring:', first, rest);
+
+    // 17. Find, findLast, findLastIndex (ES2023+)
+    let findLastDemo = [1,2,3,2,1];
+    console.log('FindLast 2:', findLastDemo.findLast(n => n === 2));
+    console.log('FindLastIndex:', findLastDemo.findLastIndex(n => n === 2));
+
+    // 18. Multidimensional Arrays
+    const matrix = [[1,2],[3,4]];
+    console.log('Matrix[20][20]:', matrix[20][20]);
+
+    // 19. Sparse Arrays and Holes
+    let sparse = [];
+    sparse[21] = 10;
+    console.log('Sparse array:', sparse, 'Length:', sparse.length);
+
+    // 20. Set/Spread/Array.from with sets/maps
+    const mySet = new Set([1,2,3]);
+    const setArr = Array.from(mySet);
+    console.log('From Set:', setArr);
+
+    const myMap = new Map([['k',99],['m',11]]);
+    const mapArr = Array.from(myMap);
+    console.log('From Map:', mapArr);
+
+    // 21. Every, some
+    console.log('Every >0:', nums.every(n => n > 0));
+    console.log('Some > 5:', nums.some(n => n > 5));
+
+    // 22. Flat, flatMap
+    const flatArr = [1, [2, 3], [[21]]].flat(2);
+    console.log('Flat:', flatArr);
+
+    // 23. Entries, Keys, Values (iterators)
+    for (const [i, v] of arr1.entries()) { console.log('entries:', i, v);}
+    for (const k of arr1.keys()) { console.log('keys:', k);}
+    for (const v of arr1.values()) { console.log('values:', v);}
+
+    // 24. At() (ES2022+)
+    let atDemo = [100, 200, 300];
+    console.log('at(0):', atDemo.at(0), 'at(-1):', atDemo.at(-1));
+
+    // 25. toReversed(), toSorted(), toSpliced() (immutable methods, ES2023+)
+    let imArr = [5,3,2,6];
+    console.log('toSorted:', imArr.toSorted());
+    console.log('toReversed:', imArr.toReversed());
+    console.log('toSpliced:', imArr.toSpliced(1,2,42));
+
+    // 26. GroupBy (proposed, showing use of reduce instead)
+    let groupByObj = [ {type: 'A', id: 1}, {type: 'A', id: 2}, {type: 'B', id: 3} ].reduce((acc, el) => {
+      (acc[el.type] ||= []).push(el); return acc;
+    }, {});
+    console.log('GroupBy via reduce:', groupByObj);
+
+    // 27. forEach and mutation
+    let mutateArr = [1,2,3];
+    mutateArr.forEach((v, i, arr) => arr[i]*=2);
+    console.log('Mutation in forEach:', mutateArr);
+
+    // 28. Chaining
+    let chainRes = nums.filter(n=>n%2).map(n=>n*n).sort((a,b)=>b-a);
+    console.log('Chained filter/map/sort:', chainRes);
+
+    // 29. Array holes and .forEach skips
+    let skipHoles = [1,,2];
+    skipHoles.forEach((v,i) => console.log('Holes test', i, v));
+  </script>
+</body>
+</html>

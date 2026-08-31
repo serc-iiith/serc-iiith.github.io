@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>JavaScript Functions Examples</title>
+<style>
+  body { font-family: Arial, sans-serif; padding: 20px; max-width: 800px; line-height: 1.5; }
+  h2 { color: #2c6fbb; }
+  button { margin: 8px 0; padding: 8px 12px; cursor: pointer; }
+  pre { background: #f4f4f4; padding: 10px; border-radius: 5px; font-family: monospace; white-space: pre-wrap; }
+</style>
+</head>
+<body>
+
+<h1>JavaScript Functions Examples</h1>
+
+<button onclick="basicFunctionExample()">Basic Function</button><br>
+<button onclick="functionAsArgumentExample()">Function as Argument</button><br>
+<button onclick="returnFunctionExample()">Function Returning Function</button><br>
+<button onclick="anonymousFunctionExample()">Anonymous Function</button><br>
+<button onclick="passByValueExample()">Pass-by-Value</button><br>
+<button onclick="recursiveFunctionExample()">Recursive Function</button><br>
+<button onclick="defaultParameterExample()">Function with Default Parameters</button><br>
+
+<script>
+  // Basic function
+  function basicFunction() {
+    return "Hello from basicFunction!";
+  }
+  function basicFunctionExample() {
+    alert(basicFunction());
+  }
+
+  // Passing function as argument
+  function greet(name) {
+    return "Hello, " + name + "!";
+  }
+  function callerFunction(fn, name) {
+    return fn(name);
+  }
+  function functionAsArgumentExample() {
+    alert(callerFunction(greet, "Alice"));
+  }
+
+  // Returning function
+  function multiplier(factor) {
+    return function(number) {
+      return number * factor;
+    };
+  }
+  function returnFunctionExample() {
+    let twice = multiplier(2);
+    alert("5 multiplied by 2 = " + twice(5));
+  }
+
+  // Anonymous function example
+  function anonymousFunctionExample() {
+    let anon = function(name) {
+      return "Hi, " + name + " (from anonymous function)";
+    };
+    alert(anon("Bob"));
+  }
+
+  // Pass-by-value example (primitives)
+  function changeValue(x) {
+    x = 100;
+  }
+  function passByValueExample() {
+    let a = 50;
+    changeValue(a);
+    alert("Value after function call (pass-by-value): " + a);
+  }
+
+  // Recursive function
+  function factorial(n) {
+    if (n <= 1) return 1;
+    else return n * factorial(n - 1);
+  }
+  function recursiveFunctionExample() {
+    let num = 5;
+    alert("Factorial of " + num + " is " + factorial(num));
+  }
+
+  // Default parameters
+  function sayHello(name = "Guest") {
+    return "Hello, " + name + "!";
+  }
+  function defaultParameterExample() {
+    alert(sayHello() + "\n" + sayHello("Charlie"));
+  }
+</script>
+
+</body>
+</html>
+

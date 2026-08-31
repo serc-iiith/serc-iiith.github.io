@@ -1,0 +1,63 @@
+<html>
+<head><title>Promise</title>
+<body>
+<script>
+//promise is a special JavaScript object that links the “producing code” and the “consuming code” together.
+
+/* 
+let promise = new Promise(function(resolve, reject) {
+  // executor (the producing code, "Instructor")
+});
+*/
+
+//The function passed to new Promise is called the executor
+//resolve(value) — if the job is finished successfully, with result value.
+//reject(error) — if an error has occurred, error is the error object.
+
+//state:pending|result:undefined
+//state:fulfilled|result:value
+//state:rejected|result:error
+/*
+let promise = new Promise(function(resolve, reject) {
+  // the function is executed automatically when the promise is constructed
+
+  // after 1 second signal that the job is done with the result "done"
+  setTimeout(() => resolve("done"), 1000);
+});
+
+let promise = new Promise(function(resolve, reject) {
+  // after 1 second signal that the job is finished with an error
+  setTimeout(() => reject(new Error("Whoops!")), 1000);
+});
+
+let promise = new Promise(function(resolve, reject) {
+  resolve("done");
+
+  reject(new Error("…")); // ignored
+  setTimeout(() => resolve("…")); // ignored
+});
+*/
+
+let promise = new Promise(function(resolve, reject) {
+  setTimeout(() => resolve("done!"), 1000);
+});
+
+// resolve runs the first function in .then
+promise.then(
+  result => alert(result), // shows "done!" after 1 second
+  error => alert(error) // doesn't run
+);
+
+let promise2 = new Promise(function(resolve, reject) {
+  setTimeout(() => reject(new Error("Whoops!")), 1000);
+});
+
+// reject runs the second function in .then
+promise2.then(
+  result => alert(result), // doesn't run
+  error => alert(error) // shows "Error: Whoops!" after 1 second
+);
+
+</script>
+</body>
+</html>
