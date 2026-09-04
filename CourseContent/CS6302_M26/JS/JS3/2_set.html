@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript Set Data Structure: All Features Demo</title>
+</head>
+<body>
+  <h2>JavaScript Set Data Structure: Complete Feature Demo</h2>
+  <p>Open the browser console (Ctrl+Shift+J) to view the output of Set features.</p>
+  <script>
+    // 1. Creation and Uniqueness
+    const set1 = new Set();
+    set1.add(1);
+    set1.add(2);
+    set1.add(2); // duplicate ignored
+    set1.add('a');
+    set1.add({x: 1});
+    const duplicateObj = {};
+    set1.add(duplicateObj);
+    set1.add(duplicateObj); // same object ref: only one entry
+    console.log('Unique values in set1:', Array.from(set1));
+
+    // 2. Initialization from array/another set
+    const set2 = new Set([1, 2, 3, 1, 4]);
+    const set3 = new Set(set2);
+    console.log('Initialized from array:', Array.from(set2));
+    console.log('Initialized from another set:', Array.from(set3));
+
+    // 3. Adding and Deleting Elements
+    set2.add(5);
+    set2.delete(1);
+    console.log('After add & delete in set2:', Array.from(set2));
+
+    // 4. Checking Existence and Size
+    console.log('set2.has(3)?', set2.has(3));
+    console.log('set2.size:', set2.size);
+
+    // 5. Clearing the set
+    const clearSet = new Set([10,20]);
+    clearSet.clear();
+    console.log('After clear:', clearSet.size);
+
+    // 6. Iteration: for..of, forEach, values, keys, entries
+    const itSet = new Set(['x','y','z']);
+    for (let val of itSet) console.log('for...of:', val);
+    itSet.forEach((value) => console.log('forEach:', value));
+    for (let val of itSet.values()) console.log('values():', val);
+    for (let key of itSet.keys()) console.log('keys():', key);
+    for (let [v1, v2] of itSet.entries()) console.log('entries():', v1, v2); // key==value
+
+    // 7. Conversion to Array and Back
+    const arr1 = Array.from(itSet);
+    const arr2 = [...itSet];
+    console.log('Converted to array:', arr1, arr2);
+
+    const backToSet = new Set(arr1);
+    console.log('From array to set:', Array.from(backToSet));
+
+    // 8. Remove duplicates from array
+    const nums = [1,2,3,2,4,1,5];
+    const uniqueArr = [...new Set(nums)];
+    console.log('Remove duplicates:', uniqueArr);
+
+    // 9. Set Operations (custom via arrays)
+    const a = new Set([1,2,3,4]);
+    const b = new Set([3,4,5,6]);
+    // Union
+    const union = new Set([...a, ...b]);
+    // Intersection
+    const intersection = new Set([...a].filter(x => b.has(x)));
+    // Difference
+    const diff = new Set([...a].filter(x => !b.has(x)));
+    console.log('Union:', Array.from(union));
+    console.log('Intersection:', Array.from(intersection));
+    console.log('Difference:', Array.from(diff));
+
+    // 10. Objects as Values (object references, not value equality)
+    const objA = {n: 1};
+    const objB = {n: 1};
+    const objSet = new Set([objA, objB]);
+    console.log('Set with objects:', Array.from(objSet));
+
+    // 11. Comparisons with Array behavior
+    console.log('Arrays allow duplicates:', [1,2,2,3,3]);
+    console.log('Set enforces uniqueness:', Array.from(new Set([1,2,2,3,3])));
+
+    // 12. Chaining add()
+    const chainSet = new Set();
+    chainSet.add(1).add(2).add(3);
+    console.log('Chained add:', Array.from(chainSet));
+
+    // 13. Set identity and object mutability
+    let modObj = {val: 10};
+    const mutableSet = new Set();
+    mutableSet.add(modObj);
+    modObj.val = 20;
+    console.log('After object mutation:', Array.from(mutableSet));
+
+    // 14. size property
+    console.log('Size property:', chainSet.size);
+
+    // 15. Set with NaN and -0/+0 comparisons
+    const nanSet = new Set([NaN, NaN, -0, 0]);
+    console.log('NaN and +/-0 in Set:', Array.from(nanSet));
+
+    // 16. WeakSet note (not iterable, only objects as values)
+    console.log('Note: WeakSet supports only objects, is not iterable, and does not prevent garbage collection.');
+  </script>
+</body>
+</html>

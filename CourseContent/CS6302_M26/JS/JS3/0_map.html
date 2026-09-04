@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript Map Data Structure: All Features Demo</title>
+</head>
+<body>
+  <h2>JavaScript Map Data Structure: Full Feature Demo</h2>
+  <p>Open the browser console (Ctrl+Shift+J) to view the output of all Map features.</p>
+  <script>
+    // 1. Initialization
+    const emptyMap = new Map();
+    const fromArray = new Map([['a', 1], ['b', 2]]);
+    
+    // 2. Adding/Updating Entries
+    emptyMap.set('key1', 'value1');
+    emptyMap.set(2, 'number key');
+    const objKey = {x: 10};
+    emptyMap.set(objKey, 'object as key');
+
+    // Update value
+    emptyMap.set('key1', 'updatedValue');
+
+    // 3. Retrieving Values
+    console.log('Get key1:', emptyMap.get('key1'));
+    console.log('Get objKey:', emptyMap.get(objKey));
+    console.log('Get non-existing:', emptyMap.get('foo'));
+
+    // 4. Checking Existence
+    console.log('Has key1:', emptyMap.has('key1'));
+    console.log('Has objKey:', emptyMap.has(objKey));
+    console.log('Has "foo":', emptyMap.has('foo'));
+
+    // 5. Size property
+    console.log('Map size:', emptyMap.size);
+
+    // 6. Deletion
+    console.log('Delete key1:', emptyMap.delete('key1'));
+    console.log('After delete, has key1:', emptyMap.has('key1'));
+
+    // 7. Clearing All Entries
+    fromArray.clear();
+    console.log('fromArray after clear:', Array.from(fromArray.entries()));
+
+    // 8. Iterating Over Map
+    emptyMap.set('fruit', 'apple').set('color', 'red').set('count', 5);
+    console.log('Iterate with for...of:');
+    for (let [key, value] of emptyMap) {
+      console.log(key, value);
+    }
+
+    console.log('Iterate with forEach:');
+    emptyMap.forEach((value, key) => {
+      console.log(key, value);
+    });
+
+    // 9. Methods: keys(), values(), entries()
+    console.log('Keys:', Array.from(emptyMap.keys()));
+    console.log('Values:', Array.from(emptyMap.values()));
+    console.log('Entries:', Array.from(emptyMap.entries()));
+
+    // 10. Using Objects as Keys (vs object as object key)
+    const m = new Map();
+    const o1 = {id: 1};
+    const o2 = {id: 2};
+    m.set(o1, 'one');
+    m.set(o2, 'two');
+    console.log('Object keys:', m.get(o1), m.get(o2));
+
+    // 11. Conversion: Map ↔ Array/Object
+    const asArray = Array.from(emptyMap);          // [[key, value], ...]
+    console.log('Map to array:', asArray);
+
+    // Map to Object (strings only)
+    const toObject = {};
+    emptyMap.forEach((value, key) => {
+      if (typeof key === 'string') toObject[key] = value;
+    });
+    console.log('Map to plain object:', toObject);
+
+    // Object to Map
+    const obj = {x: 1, y: 2};
+    const objToMap = new Map(Object.entries(obj));
+    console.log('Object to Map:', Array.from(objToMap));
+
+    // 12. Map vs Object Difference
+    // Map allows any value as key, Object only allows string/symbol as property name
+    const testMap = new Map();
+    testMap.set(1, 'number');
+    testMap.set(true, 'boolean');
+    testMap.set(null, 'null');
+    testMap.set(undefined, 'undefined');
+    testMap.set(function () {}, 'function');
+    console.log('Different types of keys in Map:', Array.from(testMap.entries()));
+
+    // 13. Chaining set()
+    const chainMap = new Map();
+    chainMap.set('a', 1).set('b', 2);
+    console.log('Chained set():', Array.from(chainMap));
+
+    // 14. WeakMap note
+    console.log('Note: WeakMap only supports object keys and is not iterable.');
+
+    // 15. Map equality check (method)
+    function areMapsEqual(a, b) {
+      if (a.size !== b.size) return false;
+      for (const [key, value] of a)
+        if (!b.has(key) || b.get(key) !== value) return false;
+      return true;
+    }
+    const m1 = new Map([['x', 1], ['y', 2]]);
+    const m2 = new Map([['x', 1], ['y', 2]]);
+    console.log('Are maps equal:', areMapsEqual(m1, m2));
+
+  </script>
+</body>
+</html>
