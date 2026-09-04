@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>JavaScript Operators Explained</title>
+<style>
+    body { font-family: Arial, sans-serif; padding: 20px; max-width: 700px; }
+    section { margin-bottom: 30px; }
+    h2 { color: #005cbf; }
+    pre { background-color: #f4f4f4; padding: 10px; border-radius: 5px; }
+    .output { background: #e8f0fe; border-left: 4px solid #005cbf; padding: 10px; margin-top: 5px; font-family: monospace; }
+</style>
+</head>
+<body>
+
+<h1>JavaScript Operators Explained with Examples</h1>
+
+<section id="arithmetic">
+  <h2>Arithmetic Operators</h2>
+  <p>Perform mathematical operations like addition, subtraction, multiplication, division, and exponentiation.</p>
+  <pre>
+let a = 10, b = 3;
+console.log(a + b);  // 13
+console.log(a - b);  // 7
+console.log(a * b);  // 30
+console.log(a / b);  // 3.3333...
+console.log(a ** b); // 1000 (10 to the power 3)
+  </pre>
+  <div class="output" id="arithOutput"></div>
+</section>
+
+<section id="remainder">
+  <h2>Remainder Operator (%)</h2>
+  <p>Returns the remainder of division of one number by another.</p>
+  <pre>
+let a = 10, b = 3;
+console.log(a % b);  // 1
+  </pre>
+  <div class="output" id="remOutput"></div>
+</section>
+
+<section id="assignment">
+  <h2>Assignment Operators</h2>
+  <p>Assign values to variables with optional arithmetic operations.</p>
+  <pre>
+let x = 5;
+x += 3;  // x = 8
+x -= 2;  // x = 6
+x *= 4;  // x = 24
+x /= 6;  // x = 4
+  </pre>
+  <div class="output" id="assignOutput"></div>
+</section>
+
+<section id="unary">
+  <h2>Unary Operators</h2>
+  <p>Operate on a single operand, like increment (++), decrement (--), negation (-), and logical NOT (!).</p>
+  <pre>
+let num = 5;
+console.log(++num);  // 6 (pre-increment)
+console.log(num--);  // 6 (post-decrement, prints then decrements)
+console.log(-num);   // -5 (negation)
+console.log(!false); // true (logical NOT)
+  </pre>
+  <div class="output" id="unaryOutput"></div>
+</section>
+
+<section id="comparison">
+  <h2>Comparison Operators</h2>
+  <p>Compare two values and return a boolean result.</p>
+  <pre>
+console.log(5 == '5'); // true (loose equality)
+console.log(5 === '5'); // false (strict equality)
+console.log(5 != 3); // true
+console.log(5 !== '5'); // true
+console.log(3 > 2);  // true
+console.log(3 <= 3); // true
+  </pre>
+  <div class="output" id="compOutput"></div>
+</section>
+
+<section id="logical">
+  <h2>Logical Operators</h2>
+  <p>Combine boolean values.</p>
+  <pre>
+console.log(true && false); // false (AND)
+console.log(true || false); // true (OR)
+console.log(!true);         // false (NOT)
+  </pre>
+  <div class="output" id="logicalOutput"></div>
+</section>
+
+<script>
+// Arithmetic Operators
+let a = 10, b = 3;
+document.getElementById('arithOutput').textContent =
+  `a + b = ${a + b}
+a - b = ${a - b}
+a * b = ${a * b}
+a / b = ${a / b}
+a ** b = ${a ** b}`;
+
+// Remainder Operator
+document.getElementById('remOutput').textContent =
+  `a % b = ${a % b}`;
+
+// Assignment Operators
+let x = 5;
+x += 3;  // 8
+x -= 2;  // 6
+x *= 4;  // 24
+x /= 6;  // 4
+document.getElementById('assignOutput').textContent =
+  `x after +=3, x = 8
+x after -=2, x = 6
+x after *=4, x = 24
+x after /=6, x = 4`;
+
+// Unary Operators
+let num = 5;
+let preInc = ++num; // 6
+let postDec = num--; // 6 (then num becomes 5)
+let neg = -num; // -5
+let notFalse = !false; // true
+document.getElementById('unaryOutput').textContent =
+  `++num = ${preInc}
+num-- = ${postDec}
+-num = ${neg}
+!false = ${notFalse}`;
+
+// Comparison Operators
+document.getElementById('compOutput').textContent =
+  `5 == '5'  : ${5 == '5'}
+5 === '5' : ${5 === '5'}
+5 != 3    : ${5 != 3}
+5 !== '5' : ${5 !== '5'}
+3 > 2     : ${3 > 2}
+3 <= 3    : ${3 <= 3}`;
+
+// Logical Operators
+document.getElementById('logicalOutput').textContent =
+  `true && false = ${true && false}
+true || false = ${true || false}
+!true = ${!true}`;
+</script>
+
+</body>
+</html>

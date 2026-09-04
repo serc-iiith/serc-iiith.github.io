@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Alert Box Variations in JavaScript</title>
+    <style>
+        /* Custom styled alert (simple example) */
+        .custom-alert {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.4);
+            z-index: 9999;
+        }
+        .custom-alert-content {
+            background: #fff;
+            color: #1d5c2f;
+            border-radius: 8px;
+            padding: 24px;
+            max-width: 350px;
+            margin: 100px auto;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 0 20px rgba(0,0,0,0.3);
+        }
+        .custom-alert-close {
+            position: absolute;
+            right: 14px;
+            top: 12px;
+            color: #888;
+            cursor: pointer;
+            font-size: 22px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h2>JavaScript Alert Box Variations</h2>
+    <button onclick="basicAlert()">Basic Alert</button>
+    <button onclick="multilineAlert()">Multi-line Alert</button>
+    <button onclick="confirmAlert()">Confirm Box</button>
+    <button onclick="promptAlert()">Prompt Box</button>
+    <button onclick="customAlert()">Custom Alert</button>
+
+    <div id="customAlert" class="custom-alert">
+        <div class="custom-alert-content">
+            <span onclick="closeCustomAlert()" class="custom-alert-close">&times;</span>
+            <div id="customAlertMsg"></div>
+        </div>
+    </div>
+
+    <script>
+        function basicAlert() {
+            alert("Hello! This is a basic alert box.");
+        }
+        function multilineAlert() {
+            alert("Hello!\nThis is a multi-line alert.\nLine 3 here.");
+        }
+        function confirmAlert() {
+            if (confirm("Do you want to continue?")) {
+                alert("You pressed OK!");
+            } else {
+                alert("You pressed Cancel!");
+            }
+        }
+        function promptAlert() {
+            let name = prompt("What is your name?", "Harry Potter");
+            if (name === null || name === "") {
+                alert("You cancelled the prompt.");
+            } else {
+                alert("Hello, " + name + "!");
+            }
+        }
+        function customAlert() {
+            document.getElementById('customAlertMsg').innerHTML = "This is a <b>custom alert box</b> with a close button.";
+            document.getElementById('customAlert').style.display = "block";
+        }
+        function closeCustomAlert() {
+            document.getElementById('customAlert').style.display = "none";
+        }
+    </script>
+</body>
+</html>

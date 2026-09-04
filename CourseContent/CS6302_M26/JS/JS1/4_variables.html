@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>JavaScript Variables & Data Types Explained</title>
+<style>
+  body { font-family: Arial, sans-serif; padding: 20px; max-width: 800px; line-height: 1.6; }
+  h2 { color: #1a73e8; }
+  pre { background-color: #f4f4f4; padding: 10px; border-radius: 5px; white-space: pre-wrap; }
+  .example { background: #e8f0fe; border-left: 4px solid #1a73e8; padding: 10px; margin-top: 5px; font-family: monospace; }
+  .memory-diagram { margin-top: 15px; }
+  .box {
+    border: 2px solid #1a73e8;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px 0;
+  }
+  .stack { background-color: #d0e2fd; }
+  .heap { background-color: #ffe599; }
+</style>
+</head>
+<body>
+
+<h1>JavaScript Variables & Data Types</h1>
+
+<section>
+  <h2>Declaring Variables: var, let, const</h2>
+  <p><code>var</code> declares variables with function or global scope and allows redeclaration. <code>let</code> declares block-scoped variables and doesn't allow redeclaration in the same scope. <code>const</code> declares block-scoped constants that cannot be reassigned.</p>
+  <pre>
+var a = 10;       // function/global scoped, redeclarable
+let b = 20;       // block scoped, no redeclaration
+const c = 30;     // block scoped, constant value
+  </pre>
+  <div class="example">
+var a = 10; // function/global scoped<br>
+let b = 20; // block scoped<br>
+const c = 30; // block scoped, constant
+  </div>
+</section>
+
+<section>
+  <h2>JavaScript Data Types</h2>
+  <p>JavaScript has <b>7 primitive</b> data types and <b>object</b> type:</p>
+  <ul>
+    <li><b>Primitive types:</b> <code>null</code>, <code>undefined</code>, <code>boolean</code>, <code>number</code>, <code>string</code>, <code>symbol</code>, <code>bigint</code></li>
+    <li><b>Object type:</b> objects, arrays, functions, etc.</li>
+  </ul>
+  <pre>
+let n = null;                  // null
+let u;                         // undefined (declared but no value)
+let isTrue = true;             // boolean
+let num = 123;                 // number
+let str = "hello";             // string
+let sym = Symbol("id");        // symbol
+let bigIntNum = 9007199254740991n; // BigInt
+let obj = { name: "John" };    // object
+  </pre>
+  <div class="example">
+n = null<br>
+u = undefined<br>
+isTrue = true<br>
+num = 123<br>
+str = "hello"<br>
+sym = Symbol("id")<br>
+bigIntNum = 9007199254740991n<br>
+obj = { name: "John" }
+  </div>
+</section>
+
+<section>
+  <h2>Primitive vs Reference Values</h2>
+  <p><b>Primitive values</b> are stored directly on the stack and include all primitives listed above. <b>Reference values</b> are objects, stored on the heap, and the variable holds a reference (pointer) to the heap.</p>
+  
+  <div class="memory-diagram">
+    <div class="box stack">
+      <h3>Stack Memory (Variables)</h3>
+      <pre>
+x: 42
+y: "Hello"
+objPtr: → (points to heap memory)</pre>
+    </div>
+
+    <div class="box heap">
+      <h3>Heap Memory (Objects)</h3>
+      <pre>
+{
+  name: "John",
+  age: 30
+}</pre>
+    </div>
+  </div>
+
+  <p>Example:</p>
+  <pre>
+let x = 42;           // primitive, value stored in stack
+let y = "Hello";      // primitive, value stored in stack
+let obj = { name: "John", age: 30 };  // object, reference stored in stack, actual object in heap
+
+let obj2 = obj;       // obj2 points to same object in heap
+obj2.age = 31;        // modifies object on heap, visible via obj too
+  </pre>
+  <div class="example" id="refExample"></div>
+</section>
+
+<script>
+  // Demonstrating Primitive vs Reference
+  let obj = { name: "John", age: 30 };
+  let obj2 = obj;     // copy reference
+  obj2.age = 31;
+
+  document.getElementById('refExample').innerHTML = 
+    `obj.age = ${obj.age} (changed through obj2)<br>` +
+    `obj2.age = ${obj2.age}`;
+</script>
+
+</body>
+</html>

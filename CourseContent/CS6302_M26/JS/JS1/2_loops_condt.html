@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>JavaScript Control Flow Examples</title>
+</head>
+<body>
+<h2>JavaScript Control Flow Examples</h2>
+
+<button onclick="ifExample()">If Example</button><br><br>
+<button onclick="ifElseExample()">If-Else Example</button><br><br>
+<button onclick="ifElseIfExample()">If-Else-If Example</button><br><br>
+<button onclick="forLoopExample()">For Loop Example</button><br><br>
+<button onclick="doWhileLoopExample()">Do-While Loop Example</button><br><br>
+<button onclick="whileLoopExample()">While Loop Example</button><br><br>
+<button onclick="untilLoopExample()">Until Loop Example (Emulated)</button><br><br>
+<button onclick="switchExample()">Switch Example</button><br><br>
+<button onclick="breakContinueExample()">Break & Continue Example</button>
+
+<script>
+  // If example
+  function ifExample() {
+    let number = prompt("Enter a number (if test):");
+    if (number > 0) {
+      alert(number + " is positive.");
+    }
+  }
+
+  // If-Else example
+  function ifElseExample() {
+    let number = prompt("Enter a number (if-else test):");
+    if (number > 0) {
+      alert(number + " is positive.");
+    } else {
+      alert(number + " is zero or negative.");
+    }
+  }
+
+  // If-Else-If example
+  function ifElseIfExample() {
+    let number = prompt("Enter a number (if-else-if test):");
+    if (number > 0) {
+      alert(number + " is positive.");
+    } else if (number < 0) {
+      alert(number + " is negative.");
+    } else {
+      alert("You entered zero.");
+    }
+  }
+
+  // For loop example
+  function forLoopExample() {
+    let result = "For loop output: ";
+    for (let i = 1; i <= 5; i++) {
+      result += i + " ";
+    }
+    alert(result);
+  }
+
+  // Do-While loop example
+  function doWhileLoopExample() {
+    let result = "Do-While loop output: ";
+    let i = 1;
+    do {
+      result += i + " ";
+      i++;
+    } while (i <= 5);
+    alert(result);
+  }
+
+  // While loop example
+  function whileLoopExample() {
+    let result = "While loop output: ";
+    let i = 1;
+    while (i <= 5) {
+      result += i + " ";
+      i++;
+    }
+    alert(result);
+  }
+
+  // Until loop example (emulated with while)
+  function untilLoopExample() {
+    let result = "Until loop output (numbers < 5): ";
+    let i = 0;
+    while (!(i >= 5)) {
+      result += i + " ";
+      i++;
+    }
+    alert(result);
+  }
+
+  // Switch example
+  function switchExample() {
+    let fruit = prompt("Enter a fruit (apple, banana, orange):").toLowerCase();
+    let message;
+    switch (fruit) {
+      case "apple":
+        message = "An apple a day keeps the doctor away.";
+        break;
+      case "banana":
+        message = "Bananas are full of potassium.";
+        break;
+      case "orange":
+        message = "Oranges are juicy and sweet.";
+        break;
+      default:
+        message = "Unknown fruit.";
+    }
+    alert(message);
+  }
+
+  // Break and Continue example
+  function breakContinueExample() {
+    let result = "Break & Continue output (skip 3, stop at 7): ";
+    for (let i = 1; i <= 10; i++) {
+      if (i === 3) {
+        continue; // Skip 3
+      }
+      if (i === 7) {
+        break; // Stop loop at 7
+      }
+      result += i + " ";
+    }
+    alert(result);
+  }
+</script>
+
+</body>
+</html>

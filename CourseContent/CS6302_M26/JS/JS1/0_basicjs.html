@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Basic JavaScript Syntax</title>
+<style>
+  body { font-family: Arial, sans-serif; padding: 20px; max-width: 600px; line-height: 1.6; }
+  h2 { color: #2a7ae2; }
+  pre { background-color: #f4f4f4; padding: 10px; border-radius: 5px; }
+  .example { background: #e7f0fd; border-left: 4px solid #2a7ae2; padding: 10px; font-family: monospace; margin-top: 10px; white-space: pre-wrap; }
+</style>
+</head>
+<body>
+
+<h1>Basic JavaScript Syntax</h1>
+
+<section>
+  <h2>Hello World Program</h2>
+  <p>The classic first program prints <code>Hello World</code> to the web page or console.</p>
+  <pre>
+// Using alert to show a popup
+alert("Hello World!");
+
+// Using console.log to print to browser console
+console.log("Hello World!");
+
+// Writing directly into the webpage
+document.write("Hello World!");
+  </pre>
+  <div class="example">
+    <!-- This will run once the page loads -->
+    <script>
+      alert("Hello World!");
+      console.log("Hello World!");
+      document.write("Hello World!");
+    </script>
+  </div>
+</section>
+
+<section>
+  <h2>Commenting in JavaScript</h2>
+  <p>Comments are notes for developers and are ignored by JavaScript engine.</p>
+  <pre>
+// This is a single-line comment
+
+/*
+  This is a multi-line comment.
+  It can span multiple lines.
+*/
+  </pre>
+  <div class="example">
+    <script>
+      // Single-line comment example
+      console.log("This line will be executed.");
+
+      /*
+        Multi-line comment example
+        The code inside will not run
+      */
+      // console.log("This line is commented out and won't run.");
+    </script>
+  </div>
+</section>
+
+</body>
+</html>
