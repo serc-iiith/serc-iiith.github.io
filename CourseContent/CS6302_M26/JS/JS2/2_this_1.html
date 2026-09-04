@@ -1,0 +1,46 @@
+<html>
+<head>
+<title>JS this Functions</title>
+<script>
+document.write("Script Tag 1 Execution begins")
+document.write("This is not from This");
+document.write("<br>")
+document.write("<br>")
+document.write(this === window); // true
+a = 37;
+document.write(window.a); // 37
+document.write("<br>")
+document.write("<br>")
+this.b = "This is from This";
+document.write(window.b)  
+document.write("<br>")
+document.write("<br>")
+document.write(b)         
+</script>
+    
+    
+<script>   
+function Person(fn, ln) {
+	this.first_name = fn;
+	this.last_name = ln;
+
+	this.displayName = function() {
+		document.write(`Name: ${this.first_name} ${this.last_name}`);
+	}
+}
+
+let person = new Person("Sai", "Anirudh");
+document.write("<br>")
+document.write("<br>")
+document.write("<br>")
+document.write("Script Tag 2 Execution begins")
+document.write("<br>")
+person.displayName();  
+document.write("<br>")
+document.write("<br>")
+let person2 = new Person("Sachin", "Tendulkar");
+person2.displayName(); 
+</script>
+    
+</head>
+</html> 

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>JavaScript Objects & Functions Examples</title>
+<style>
+  body { font-family: Arial, sans-serif; padding: 20px; max-width: 900px; line-height: 1.5; }
+  h2 { color: #2e70c7; }
+  button { margin: 10px 0; padding: 8px 14px; cursor: pointer; }
+  pre { background: #f0f4ff; padding: 10px; border-radius: 5px; font-family: monospace; white-space: pre-wrap; }
+</style>
+</head>
+<body>
+
+<h1>JavaScript Object & Function Patterns</h1>
+
+<button onclick="objectMethodExample()">Object Method Example</button><br>
+<button onclick="constructorFunctionExample()">Constructor Function Example</button><br>
+<button onclick="prototypeExample()">Prototype Example</button><br>
+<button onclick="factoryFunctionExample()">Factory Function Example</button><br>
+
+<script>
+  // Object Method example
+  function objectMethodExample() {
+    const person = {
+      firstName: "Alice",
+      lastName: "Smith",
+      fullName: function() {
+        return this.firstName + " " + this.lastName;
+      }
+    };
+    alert("Object Method Output:\n" + person.fullName());
+  }
+
+  // Constructor Function example
+  function Person(firstName, lastName) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.fullName = function() {
+      return this.firstName + " " + this.lastName;
+    };
+  }
+  function constructorFunctionExample() {
+    const p1 = new Person("Bob", "Johnson");
+    alert("Constructor Function Output:\n" + p1.fullName());
+  }
+
+  // Prototype example
+  function Animal(type) {
+    this.type = type;
+  }
+  Animal.prototype.speak = function() {
+    return "The " + this.type + " makes a sound.";
+  };
+  function prototypeExample() {
+    const dog = new Animal("dog");
+    alert("Prototype Method Output:\n" + dog.speak());
+  }
+
+  // Factory Function example
+  function createCar(make, model) {
+    return {
+      make: make,
+      model: model,
+      details: function() {
+        return `${this.make} ${this.model}`;
+      }
+    };
+  }
+  function factoryFunctionExample() {
+    const car = createCar("Toyota", "Camry");
+    alert("Factory Function Output:\n" + car.details());
+  }
+</script>
+
+</body>
+</html>

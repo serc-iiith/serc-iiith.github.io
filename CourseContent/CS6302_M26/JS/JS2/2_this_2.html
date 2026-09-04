@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>JavaScript Advanced Concepts</title>
+<style>
+  body { font-family: Arial, sans-serif; padding: 20px; max-width: 900px; line-height: 1.5; }
+  h2 { color: #3178c6; }
+  button { margin: 10px 0; padding: 8px 14px; cursor: pointer; }
+  pre { background: #f0f6ff; padding: 10px; border-radius: 5px; font-family: monospace; white-space: pre-wrap; }
+</style>
+</head>
+<body>
+
+<h1>JavaScript this, call, bind, Closure, Arrow Function, Rest Parameter, Callback</h1>
+
+<button onclick="thisExample()">Basic this Function</button><br>
+<button onclick="callExample()">call() Example</button><br>
+<button onclick="bindExample()">bind() Example</button><br>
+<button onclick="closureExample()">Closure Example</button><br>
+<button onclick="arrowFunctionExample()">Arrow Function Example</button><br>
+<button onclick="restParameterExample()">Rest Parameter Example</button><br>
+<button onclick="callbackFunctionExample()">Callback Function Example</button><br>
+
+<script>
+  // Basic this function
+  const thisObj = {
+    name: "Alice",
+    greet: function() {
+      return "Hello, " + this.name;
+    }
+  };
+  function thisExample() {
+    alert(thisObj.greet());
+  }
+
+  // call() example to explicitly set this context
+  function callExample() {
+    function greet() {
+      return "Hello, " + this.name;
+    }
+    const person = { name: "Bob" };
+    alert(greet.call(person));
+  }
+
+  // bind() example returns a new function with bound this
+  function bindExample() {
+    function greet() {
+      return "Hi, " + this.name;
+    }
+    const user = { name: "Charlie" };
+    const boundGreet = greet.bind(user);
+    alert(boundGreet());
+  }
+
+  // Closure example: function remembers outer scope variables
+  function closureExample() {
+    function outer() {
+      let count = 0;
+      return function inner() {
+        count++;
+        return "Count: " + count;
+      }
+    }
+    const counter = outer();
+    alert(counter()); // Count: 1
+    alert(counter()); // Count: 2
+  }
+
+  // Arrow function example (lexical this)
+  function arrowFunctionExample() {
+    const obj = {
+      name: "Dana",
+      greet: () => {
+        return "Arrow function says hi to " + obj.name;
+      }
+    };
+    alert(obj.greet());
+  }
+
+  // Rest parameter example: function that sums any number of arguments
+  function restParameterExample() {
+    function sum(...numbers) {
+      return numbers.reduce((acc, n) => acc + n, 0);
+    }
+    alert("Sum: " + sum(1, 2, 3, 4, 5));
+  }
+
+  // Callback function example
+  function callbackFunctionExample() {
+    function greet(name, callback) {
+      alert("Hello " + name + "!");
+      callback();
+    }
+    function afterGreeting() {
+      alert("This is the callback function running.");
+    }
+    greet("Eve", afterGreeting);
+  }
+</script>
+
+</body>
+</html>

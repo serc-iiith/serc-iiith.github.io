@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>JavaScript Iterators & Generators</title>
+<style>
+  body { font-family: Arial, sans-serif; max-width: 900px; margin: 20px auto; line-height: 1.6; }
+  h2 { color: #1e70c7; }
+  button { margin: 10px 0; padding: 8px 14px; cursor: pointer; }
+  pre { background: #eef6ff; border-left: 4px solid #1e70c7; padding: 10px; border-radius: 5px; white-space: pre-wrap; font-family: monospace; }
+  #output { background: #dbeaff; border-left: 4px solid #1e70c7; padding: 10px; white-space: pre-wrap; margin-top: 15px; font-family: monospace; }
+</style>
+</head>
+<body>
+
+<h1>JavaScript Iterators, Generators, yield, Symbol.iterator, Array Iterator</h1>
+
+<section>
+  <h2>1. Iterator Example</h2>
+  <pre>
+const myIterator = {
+  data: [10, 20, 30],
+  index: 0,
+  next() {
+    if (this.index < this.data.length) {
+      return { value: this.data[this.index++], done: false };
+    } else {
+      return { done: true };
+    }
+  }
+};
+
+console.log(myIterator.next()); // { value: 10, done: false }
+  </pre>
+  <button onclick="iteratorExample()">Run Iterator</button>
+</section>
+
+<section>
+  <h2>2. Generator & yield Example</h2>
+  <pre>
+function* generateNumbers() {
+  yield 1;
+  yield 2;
+  yield 3;
+}
+const gen = generateNumbers();
+
+console.log(gen.next()); // { value: 1, done: false }
+  </pre>
+  <button onclick="generatorExample()">Run Generator</button>
+</section>
+
+<section>
+  <h2>3. Symbol.iterator Example</h2>
+  <pre>
+const myIterable = {
+  data: [100, 200, 300],
+  [Symbol.iterator]() {
+    let index = 0;
+    const data = this.data;
+    return {
+      next() {
+        if (index < data.length) {
+          return { value: data[index++], done: false };
+        } else {
+          return { done: true };
+        }
+      }
+    };
+  }
+};
+
+for(let val of myIterable) {
+  console.log(val);
+}
+  </pre>
+  <button onclick="symbolIteratorExample()">Run Symbol.iterator</button>
+</section>
+
+<section>
+  <h2>4. Array Iterator Example</h2>
+  <pre>
+const arr = ['a', 'b', 'c'];
+const arrIterator = arr[Symbol.iterator]();
+
+console.log(arrIterator.next()); // { value: 'a', done: false }
+  </pre>
+  <button onclick="arrayIteratorExample()">Run Array Iterator</button>
+</section>
+
+<div id="output"></div>
+
+<script>
+  function iteratorExample() {
+    const myIterator = {
+      data: [10, 20, 30],
+      index: 0,
+      next() {
+        if (this.index < this.data.length) {
+          return { value: this.data[this.index++], done: false };
+        } else {
+          return { done: true };
+        }
+      }
+    };
+    let result = "";
+    for (let i = 0; i < 4; i++) {
+      result += JSON.stringify(myIterator.next()) + "\n";
+    }
+    document.getElementById('output').textContent = result;
+  }
+
+  function* generateNumbers() {
+    yield 1;
+    yield 2;
+    yield 3;
+  }
+  function generatorExample() {
+    const gen = generateNumbers();
+    let result = "";
+    for (let i = 0; i < 4; i++) {
+      result += JSON.stringify(gen.next()) + "\n";
+    }
+    document.getElementById('output').textContent = result;
+  }
+
+  function symbolIteratorExample() {
+    const myIterable = {
+      data: [100, 200, 300],
+      [Symbol.iterator]() {
+        let index = 0;
+        const data = this.data;
+        return {
+          next() {
+            if (index < data.length) {
+              return { value: data[index++], done: false };
+            } else {
+              return { done: true };
+            }
+          }
+        };
+      }
+    };
+    let result = "";
+    for (const val of myIterable) {
+      result += val + "\n";
+    }
+    document.getElementById('output').textContent = result;
+  }
+
+  function arrayIteratorExample() {
+    const arr = ['a', 'b', 'c'];
+    const arrIterator = arr[Symbol.iterator]();
+    let result = "";
+    for (let i = 0; i < 4; i++) {
+      result += JSON.stringify(arrIterator.next()) + "\n";
+    }
+    document.getElementById('output').textContent = result;
+  }
+</script>
+
+</body>
+</html>

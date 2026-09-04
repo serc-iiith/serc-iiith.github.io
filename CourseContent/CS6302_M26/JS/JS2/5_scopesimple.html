@@ -1,0 +1,49 @@
+<html>
+<head>
+<title>JS Function Scope</title>
+<script>
+    
+    function student(name,age,subject){
+        //Private - only available inside student function
+        var IsPassed = "Yes";
+        
+        //Public Value - available even outsite students method
+        this.name=name;
+        this.getName = function(){
+            return this.name;
+        };
+        
+        this.age=age;
+        student.prototype.getAge = function(){
+            return this.age;
+        }
+        
+    
+        //Privileged - has access to private values but at the same time publicly exposing itself. We can delete or replace this method, but cannot alter its contents
+        //Below example returns a private value
+        this.getPassstatus = function(){
+            return IsPassed;
+        };
+        
+        //Static value aren't called on instances of the class. Instead, they're called on the class itself.
+        student.city="Hyderabad";
+    }
+    
+    
+    var stud = new student("Sachin","22","ComputerScience");
+    
+    document.write(stud.IsPassed); //Private
+    document.write("<br>");
+    document.write(stud.getPassstatus()); //Privileged
+    document.write("<br>");
+    document.write(stud.name); //Public
+    document.write("<br>");
+    document.write(stud.getAge()); //Public
+    document.write("<br>");
+    document.write(stud.city); // Error as City is Static
+    document.write("<br>");
+    document.write(student.city); //Static Value
+    
+</script> 
+</head>
+</html>

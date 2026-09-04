@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>JavaScript try-catch, finally, throw Example</title>
+<style>
+  body { font-family: Arial, sans-serif; max-width: 700px; margin: 20px auto; line-height: 1.6; }
+  h2 { color: #2a6ebb; }
+  button { margin: 10px 0; padding: 8px 14px; cursor: pointer; }
+  pre { background: #eef6ff; border-left: 4px solid #2a6ebb; padding: 10px; border-radius: 5px; white-space: pre-wrap; font-family: monospace; }
+  #output { background: #e1ecff; padding: 10px; border-left: 4px solid #2a6ebb; white-space: pre-wrap; margin-top: 15px; font-family: monospace; }
+</style>
+</head>
+<body>
+
+<h1>JavaScript Error Handling: try-catch, finally, throw, Optional Catch Binding</h1>
+
+<section>
+  <h2>1. try-catch</h2>
+  <pre>
+try {
+  // Code that may throw error
+  throw new Error("An error occurred!");
+} catch (e) {
+  console.log("Caught error: " + e.message);
+}
+  </pre>
+  <button onclick="tryCatchExample()">Run try-catch</button>
+</section>
+
+<section>
+  <h2>2. try-catch-finally</h2>
+  <pre>
+try {
+  throw new Error("Another error!");
+} catch (e) {
+  console.log("Caught: " + e.message);
+} finally {
+  console.log("Finally block always runs.");
+}
+  </pre>
+  <button onclick="tryCatchFinallyExample()">Run try-catch-finally</button>
+</section>
+
+<section>
+  <h2>3. throw</h2>
+  <pre>
+function checkNumber(num) {
+  if (typeof num !== "number") {
+    throw "Not a number!";
+  }
+  return num;
+}
+  </pre>
+  <button onclick="throwExample()">Run throw example</button>
+</section>
+
+<section>
+  <h2>4. Optional Catch Binding</h2>
+  <pre>
+try {
+  throw new Error("Error without catch parameter!");
+} catch {
+  console.log("Error caught with no catch parameter.");
+}
+  </pre>
+  <button onclick="optionalCatchExample()">Run optional catch binding</button>
+</section>
+
+<div id="output"></div>
+
+<script>
+  function tryCatchExample() {
+    let output = "";
+    try {
+      throw new Error("An error occurred!");
+    } catch (e) {
+      output = "Caught error: " + e.message;
+    }
+    document.getElementById('output').textContent = output;
+  }
+
+  function tryCatchFinallyExample() {
+    let output = "";
+    try {
+      throw new Error("Another error!");
+    } catch (e) {
+      output += "Caught: " + e.message + "\n";
+    } finally {
+      output += "Finally block always runs.";
+    }
+    document.getElementById('output').textContent = output;
+  }
+
+  function throwExample() {
+    let output = "";
+    function checkNumber(num) {
+      if (typeof num !== "number") {
+        throw "Not a number!";
+      }
+      return num;
+    }
+    try {
+      checkNumber("abc");
+    } catch (e) {
+      output = "Error caught: " + e;
+    }
+    document.getElementById('output').textContent = output;
+  }
+
+  function optionalCatchExample() {
+    let output = "";
+    try {
+      throw new Error("Error without catch parameter!");
+    } catch {
+      output = "Error caught with no catch parameter.";
+    }
+    document.getElementById('output').textContent = output;
+  }
+</script>
+
+</body>
+</html>
