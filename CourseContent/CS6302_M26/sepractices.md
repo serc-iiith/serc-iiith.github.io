@@ -68,6 +68,24 @@ Software licenses define legal permissions, obligations, copyright boundaries, a
 *   **Creative Commons (CC):** Applied predominantly to creative media, tutorials, datasets, and documentation.
 *   **Proprietary Licenses:** The vendor retains full copyright and source code exclusivity; users purchase a restrictive license to operate the compiled binary under explicit End User License Agreements (EULA).
 
+   [ Product Strategy & Business ]
+     ├── Product Manager (PM)
+     ├── Business Analyst (BA)
+     └── UI/UX Designer
+               │
+               ▼
+   [ Engineering Execution & Leadership ]
+     ├── Software Architect
+     ├── Engineering Manager (EM)
+     ├── Team / Technical Lead (Tech Lead)
+     └── Scrum Master / Agile Coach
+               │
+               ▼
+   [ Delivery & Verification ]
+     ├── Software Developers (SWE)
+     ├── QA Engineers
+     └── Testers
+
 ---
 
 ## 3. Software Engineering Team Roles & Functions
